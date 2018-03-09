@@ -14,7 +14,7 @@ Version stable.
 
 # Less Mixins
 
-[General adnimation ess mixins](https://github.com/aneldev/dyna-animation/blob/master/dyna-animation-mixins.less)
+[General adnimation less mixins](https://github.com/aneldev/dyna-animation/blob/master/dyna-animation-mixins.less)
 
 # React components
 
@@ -85,6 +85,6 @@ The `children` you will pass (only one child is supported) should occupy all the
 
 ### Known issues - you can't change dynamically the `width` and `height`
 
-Actually you can, but it _jumps_. The new dimension are not applied smoothly.
+Actually you can, but it _jumps_. The new dimension is not applied smoothly.
 
 This comes from the point that the keyframes are handling the animations and you cannot apply transition and animation on the same css attributes. _Forks also are welcome_.  

@@ -6,6 +6,7 @@ import "./DynaAnimation3dFlip.less";
 export interface IDynaAnimation3dFlipProps {
   className?: string;
   show: boolean;
+  perspective: number;
   direction?: EFlipDirection;
   children: any;
 }
@@ -19,6 +20,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
   static defaultProps: IDynaAnimation3dFlipProps = {
     className: '',
     show: true,
+    perspective: 400,
     direction: EFlipDirection.HORIZONTAL,
     children: null,
   };
@@ -27,6 +29,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     const {
       className: userClassName,
       show,
+      perspective,
       direction,
       children
     } = this.props;
@@ -41,6 +44,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       <DynaAnimation
         animations={{show}}
         className={className}
+        style={{perspective: `${perspective}px`}}
       >
         <div>{children}</div>
       </DynaAnimation>

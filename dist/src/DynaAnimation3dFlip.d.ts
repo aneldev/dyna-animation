@@ -3,6 +3,7 @@ import "./DynaAnimation3dFlip.less";
 export interface IDynaAnimation3dFlipProps {
     className?: string;
     show: boolean;
+    perspective: number;
     direction?: EFlipDirection;
     children: any;
 }

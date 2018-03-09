@@ -1,7 +1,7 @@
 .dyna-animation-3d-flip {
 	@animation-duration: 1s;
+	perspective: 333px; // fallback value, is overridden from javascript!
 
-	perspective: 400px;
 	> div {
 		transition: transform 250ms ease-in-out;
 	}
@@ -25,10 +25,10 @@
 
 	@keyframes vertical-show {
 		from {
-			transform: rotateX(270deg);
+			transform: rotateX(90deg);
 		}
 		to {
-			transform: rotateX(360deg);
+			transform: rotateX(0deg);
 		}
 	}
 	@keyframes vertical-hide {
@@ -36,7 +36,7 @@
 			transform: rotateX(0deg);
 		}
 		to {
-			transform: rotateX(90deg);
+			transform: rotateX(-90deg);
 		}
 	}
 

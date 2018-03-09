@@ -1,7 +1,9 @@
 import * as React from "react";
+import {CSSProperties} from "react";
 
 export interface IDynaAnimationProps {
   className?: string;
+  style?: CSSProperties;
   animations: {
     [animationName: string]: boolean;
   };
@@ -11,6 +13,7 @@ export interface IDynaAnimationProps {
 export class DynaAnimation extends React.Component<IDynaAnimationProps> {
   static defaultProps: IDynaAnimationProps = {
     className: null,
+    style: {},
     animations: {},
     children: null,
   };
@@ -19,6 +22,7 @@ export class DynaAnimation extends React.Component<IDynaAnimationProps> {
     const {
       className: userClassName,
       animations,
+      style,
       children,
     } = this.props;
 
@@ -28,6 +32,11 @@ export class DynaAnimation extends React.Component<IDynaAnimationProps> {
       Object.keys(animations).map((animationName: string) => `animation-${animationName}-${animations[animationName] ? 'on' : 'off'}`).join(' '),
     ].join(' ').trim();
 
-    return <div className={className}>{children}</div>;
+    return (
+      <div
+        className={className}
+        style={style}
+      >{children}</div>
+    );
   }
 }

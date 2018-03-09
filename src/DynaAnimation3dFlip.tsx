@@ -31,6 +31,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
   };
 
   private renderStyle():JSX.Element{
+    // render additional needed style, where are the key frames for width and height
     const {
       className: userClassName,
       width,
@@ -44,7 +45,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
                   width: 0;
                 }
                 to {
-                  width: ${width}px;
+                    width: ${width}px;
                 }
               }
               @keyframes container-width-hide {
@@ -82,6 +83,8 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       show,
       perspective,
       direction,
+      width,
+      height,
       children,
     } = this.props;
 
@@ -91,6 +94,11 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       `flip-direction-${direction}`,
     ].join(' ').trim();
 
+    const child: JSX.Element = React.cloneElement(
+      children,
+      {style: {width: width + 'px', height: height + 'px'}}
+      );
+
     return (
       <DynaAnimation
         animations={{show}}
@@ -98,7 +106,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
         style={{perspective: `${perspective}px`}}
       >
         {this.renderStyle()}
-        <div>{children}</div>
+        <div>{child}</div>
       </DynaAnimation>
     );
   }

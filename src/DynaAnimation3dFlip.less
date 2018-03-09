@@ -1,6 +1,7 @@
 .dyna-animation-3d-flip {
-	@animation-duration: 1s;
+	@animation-duration: 250ms;
 	perspective: 333px; // fallback value, is overridden from javascript!
+	overflow: hidden;
 
 	> div {
 		transition: transform @animation-duration ease-in-out;
@@ -57,6 +58,17 @@
 			opacity: 0;
 		}
 	}
+
+	/*	Dev note:
+		Where are the
+			@keyframes container-width-show
+			@keyframes container-width-hide
+			@keyframes container-height-show
+			@keyframes container-height-hide ???
+		Since the width ang height is configrable and browsers doesn't support height: auto
+		for animations, the width and height is updated from javascript.
+		So, these also key frames are "generated" from javascript.
+	*/
 
 	&.animation-show-on {
 		&.flip-direction- {

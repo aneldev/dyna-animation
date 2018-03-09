@@ -1,0 +1,71 @@
+.dyna-animation-3d-flip {
+	@animation-duration: 1s;
+
+	perspective: 400px;
+	> div {
+		transition: transform 250ms ease-in-out;
+	}
+
+	@keyframes horizontal-show {
+		from {
+			transform: rotateY(270deg);
+		}
+		to {
+			transform: rotateY(360deg);
+		}
+	}
+	@keyframes horizontal-hide {
+		from {
+			transform: rotateY(0deg);
+		}
+		to {
+			transform: rotateY(90deg);
+		}
+	}
+
+	@keyframes vertical-show {
+		from {
+			transform: rotateX(270deg);
+		}
+		to {
+			transform: rotateX(360deg);
+		}
+	}
+	@keyframes vertical-hide {
+		from {
+			transform: rotateX(0deg);
+		}
+		to {
+			transform: rotateX(90deg);
+		}
+	}
+
+	&.animation-show-on {
+		&.flip-direction- {
+			&HORIZONTAL {
+				> div {
+					animation: horizontal-show @animation-duration forwards;
+				}
+			}
+			&VERTICAL {
+				> div {
+					animation: vertical-show @animation-duration forwards;
+				}
+			}
+		}
+	}
+	&.animation-show-off {
+		&.flip-direction- {
+			&HORIZONTAL {
+				> div {
+					animation: horizontal-hide @animation-duration forwards;
+				}
+			}
+			&VERTICAL {
+				> div {
+					animation: vertical-hide @animation-duration forwards;
+				}
+			}
+		}
+	}
+}

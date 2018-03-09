@@ -11,7 +11,7 @@ export const showcaseView: IShowcaseView = {
   component: (
     <DynaAnimation3dFlip
       show={null}
-      perspective={400}
+      perspective={null}
     >
       <div className="my-flip-3d-item">content</div>
     </DynaAnimation3dFlip>
@@ -23,6 +23,8 @@ export const showcaseView: IShowcaseView = {
       props: {
         direction: EFlipDirection.HORIZONTAL,
         show: true,
+        animateWidth: 400,
+        perspective: 400,
       } as IDynaAnimation3dFlipProps,
     },
     {
@@ -31,6 +33,8 @@ export const showcaseView: IShowcaseView = {
       props: {
         direction: EFlipDirection.HORIZONTAL,
         show: false,
+        animateWidth: 0,
+        perspective: 400,
       }
     },
     {
@@ -39,6 +43,8 @@ export const showcaseView: IShowcaseView = {
       props: {
         direction: EFlipDirection.VERTICAL,
         show: true,
+        animateHeight: 150,
+        perspective: 400,
       } as IDynaAnimation3dFlipProps,
     },
     {
@@ -46,7 +52,9 @@ export const showcaseView: IShowcaseView = {
       title: 'hide-vertical',
       props: {
         direction: EFlipDirection.VERTICAL,
+        animateHeight: 0,
         show: false,
+        perspective: 400,
       }
     },
   ]

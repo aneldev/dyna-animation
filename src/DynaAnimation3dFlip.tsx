@@ -2,13 +2,16 @@ import * as React from 'react';
 import {DynaAnimation} from "./DynaAnimation";
 
 import "./DynaAnimation3dFlip.less";
+import {CSSProperties} from "react";
 
 export interface IDynaAnimation3dFlipProps {
   className?: string;
   show: boolean;
   perspective: number;
+  animateWidth?: number;
+  animateHeight?: number;
   direction?: EFlipDirection;
-  children: any;
+  children: JSX.Element;
 }
 
 export enum EFlipDirection {
@@ -21,6 +24,8 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     className: '',
     show: true,
     perspective: 400,
+    animateWidth: null,
+    animateHeight: null,
     direction: EFlipDirection.HORIZONTAL,
     children: null,
   };
@@ -31,7 +36,9 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       show,
       perspective,
       direction,
-      children
+      animateWidth,
+      animateHeight,
+      children,
     } = this.props;
 
     const className: string = [
@@ -40,13 +47,20 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       `flip-direction-${direction}`,
     ].join(' ').trim();
 
+    const contentStyle: CSSProperties = {};
+    // if (animateWidth != null) contentStyle.width = `${animateWidth}px`;
+    // if (animateHeight != null) contentStyle.height = `${animateHeight}px`;
+
     return (
       <DynaAnimation
         animations={{show}}
         className={className}
         style={{perspective: `${perspective}px`}}
       >
-        <div>{children}</div>
+        <style>
+          {`body {border: 2px solid red} `}
+        </style>
+        <div>{React.cloneElement(children, {style: contentStyle})}</div>
       </DynaAnimation>
     );
   }

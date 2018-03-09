@@ -3,7 +3,27 @@
 	perspective: 333px; // fallback value, is overridden from javascript!
 
 	> div {
-		transition: transform 250ms ease-in-out;
+		transition: transform @animation-duration ease-in-out;
+		> div {
+			//transition: width @animation-duration ease-in-out, height @animation-duration ease-in-out;
+		}
+	}
+
+	@keyframes container-height-show {
+		from {
+			height: 0;
+		}
+		to {
+			height: 150px;
+		}
+	}
+	@keyframes container-height-hide {
+		from {
+			height: 150px;
+		}
+		to {
+			height: 0;
+		}
 	}
 
 	@keyframes horizontal-show {
@@ -22,21 +42,29 @@
 			transform: rotateY(90deg);
 		}
 	}
-
 	@keyframes vertical-show {
 		from {
 			transform: rotateX(90deg);
 		}
+		0.001% {
+			opacity: 1;
+			transform: rotateX(90deg);
+		}
 		to {
+			opacity: 1;
 			transform: rotateX(0deg);
 		}
 	}
 	@keyframes vertical-hide {
-		from {
+		0% {
 			transform: rotateX(0deg);
 		}
-		to {
+		99.999% {
 			transform: rotateX(-90deg);
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
 		}
 	}
 
@@ -48,8 +76,11 @@
 				}
 			}
 			&VERTICAL {
+				animation: container-height-show @animation-duration forwards;;
 				> div {
+					opacity: 0;
 					animation: vertical-show @animation-duration forwards;
+					animation-delay: @animation-duration;
 				}
 			}
 		}
@@ -62,6 +93,8 @@
 				}
 			}
 			&VERTICAL {
+				animation: container-height-hide @animation-duration forwards;;
+				animation-delay: @animation-duration;
 				> div {
 					animation: vertical-hide @animation-duration forwards;
 				}

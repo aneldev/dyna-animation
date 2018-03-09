@@ -4,8 +4,10 @@ export interface IDynaAnimation3dFlipProps {
     className?: string;
     show: boolean;
     perspective: number;
+    animateWidth?: number;
+    animateHeight?: number;
     direction?: EFlipDirection;
-    children: any;
+    children: JSX.Element;
 }
 export declare enum EFlipDirection {
     HORIZONTAL = "HORIZONTAL",

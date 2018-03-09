@@ -45,6 +45,8 @@ When the value is `true` applies `on` and when it is `false` applied `off`.
 
 [DynaAnimation example](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/simple-one-element-animation.tsx)
 
+[DynaAnimation example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/simple-one-element-animation.less)
+
 ## `DynaAnimation3dFlip` - Dyna Animation 3d Flip
 
 This container flips the content vertically or horizontally like 3d card.
@@ -76,6 +78,10 @@ The `children` you will pass (only one child is supported) should occupy all the
       <div className="my-flip-3d-item">content</div>
     </DynaAnimation3dFlip>
 ```
+
+[DynaAnimation3dFlip example](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/flip-3d-item-show-hide.tsx)
+
+[DynaAnimation3dFlip example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/flip-3d-item-show-hide.less)
 
 ### Known issues - you can't change dynamically the `width` and `height`
 

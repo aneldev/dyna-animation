@@ -4,8 +4,8 @@ export interface IDynaAnimation3dFlipProps {
     className?: string;
     show: boolean;
     perspective: number;
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
     direction?: EFlipDirection;
     children: JSX.Element;
 }

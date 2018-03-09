@@ -1,98 +1,90 @@
 # About
 
-## complete and simple animation "engine"
+Dyna animations are a set of `less mixins` and `react component` to perform animations.
 
-It is simple!!!
+More animation react components will come to this repo.
 
-- The `dyna-animation` is switching the classes in only two states, `on` and `off`.
-- Your css implementation is performing animation with keyframes.
+Are written in Typescript and runs everywhere.
 
-With keyframes you have the full control of animation, so you have unlimited states.
+Version stable.
 
-Ideally you don't need the `dyna-animation` but this makes the switch from the props easier.
+# Demo
 
-What `dyna-animation` offers also is a bunch of animation mixins. Since are implemented in less can is clean and more comprehensive to alter them or create your own based on them.
+`npm start`
 
-At the end... `dyna-animation` is not an engine but a nice technology mixer.
+# Less Mixins
 
-# Use cases
+[General adnimation ess mixins](https://github.com/aneldev/dyna-animation/blob/master/dyna-animation-mixins.less)
 
-## in a list, how to remove an item with animation
+# React components
 
-You don't need any engine or any super tool to do this.
+## DynaAnimation
 
-- pass to `dyna-animation` component (where is the wrapper of your listed item) the proper `props.animations.show: false`.
-- after a timeout, remove the item from you array
+This is the core component.
 
-All the above updates will be done through the state! So your app is totally clean.
+It is very simple. You pass an object at `animations` prop and it applies its boolean properties as a class names.
 
-Ideally the update the state will be done with this code:
+Actually you can do animations without this component, but this simplifies and standardize the class naming convention for animatios.
+
+This use
+```
+    <DynaAnimation
+      className="my-container"
+      animations={{
+      	show: true,
+      }}
+    >
+      <div className="play-box">My awesome contenet</div>
+    </DynaAnimation>
+```
+...creates this class:
+```
+dyna-animation my-container animation-show-on
+```
+When the value is `true` applies `on` and when it is `false` applied `off`.
+
+[DynaAnimation example](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/simple-one-element-animation.tsx)
+
+[DynaAnimation example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/simple-one-element-animation.less)
+
+## `DynaAnimation3dFlip` - Dyna Animation 3d Flip
+
+This container flips the content vertically or horizontally like 3d card.
+
+Also is adjusts the `width` and `height` automatically during the animations so this is ideal for listed items!
+
+The `width` and `height` of the content is defined in the `props` of the react component **and not in css**. This happens because JS also wants to know the the `width` and `height` in advance. In order to have only one point we define the `width` and `height` we define it in the props of `DynaAnimation3dFlip`.
+
+The `children` you will pass (only one child is supported) should occupy all the given space from the `DynaAnimation3dFlip`.
+
+### Props
+
+- `className`: string - optional, is not needed really, use it only for position or margins etc
+- `show`: boolean - nothing much to say about this, it shows the content or not with animations
+- `width` and `height` - as described above
+- `perspective`: number - this the css perspective, it is different according the `width` _or_ `height`, the ideal is to be the same with the width, _play around with it_
+- `direction`: EFlipDirection - use `HORIZONTAL` or `VERTICAL` and if you white in Typescipt there are enums and you can use the `EFlipDirection.HORIZONTAL` or the `EFlipDirection.VERTICAL` respectively.
+- `children`: JSX.Element - Only one child is supported, this child should occupy the whole given area (this means `width: 100%` and `height: 100%` or something similar).
+
+### Example:
 
 ```
-
-class MyAwesomeLister extends React.Component {
-
-	// ...
-
-	getItemsShowingItem(id, show){
-	}
-	
-	getItemsHidingItem(id, show){
-		// update the item with this id to be shown or not
-		// this show prop is passed to dyna-animation wrapper of the item
-		return this.state.items.map(item => { 
-			if (item.id === id} item.show = show;
-			return item; 
-		}); 
-	}
-	
-	getItemsRemovingItem(id){
-		// remove from the list the item with this id
-		return this.state.items.filter(item => item.id !== id); 
-	}
-
-	showItem(id){
-		this.setState({
-			items: this.getItemsShowingItem(id, false) 	// start the animation to hide it
-		});
-		setTimeout(()=>{
-			this.setState({
-				items: this.getItemsRemovingItem(id),	// at the end, remove it from the list
-			})
-		}, 300); // 300ms is the duration of the hide animation, this comes from the css implementation
-	}
-
-	hideItem(id){	
-		this.setState({
-			items: this.getItemsHidinfItem(id, false) 	// start the animation to hide it
-		});
-		setTimeout(()=>{
-			this.setState({
-				items: this.getItemsRemovingItem(id),	// at the end, remove it from the list
-			})
-		}, 300); // 300ms is the duration of the hide animation, this comes from the css implementation
-	}
-	
-	render(){
-		const {items} = this.state;
-		return (
-			<div>
-				{items.map(item=>(
-					<DynaAnimation animations={{show: item.show}}>
-						<MyItem data={item} />
-					</DynaAnimation>
-				))}
-			</div>
-		)
-	}
-	
-	// ...
-
-}
-
+    <DynaAnimation3dFlip
+      show={true}
+      perspective={400}
+      width={400}
+      height={150}
+    >
+      <div className="my-flip-3d-item">content</div>
+    </DynaAnimation3dFlip>
 ```
 
-In the above code, we remove the item from the state, when the animation is completed. At this time, the item should be not visible in the screen. Techically, the height of the item should become 0, this is css job of course.
+[DynaAnimation3dFlip example](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/flip-3d-item-show-hide.tsx)
 
-To be more correct, the `setState` should be called in the callback (2nd argument) of the `setState`. For the sake of simplicity I left it like this.
+[DynaAnimation3dFlip example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/flip-3d-item-show-hide.less)
 
+### Known issues - you can't change dynamically the `width` and `height`
+
+Actually you can, but it _jumps_. The new dimension are not applied smoothly.
+
+This comes from the point that the keyframes are handling the animations and you cannot apply transition and animation on the same css attributes. _Forks also are welcome_.  

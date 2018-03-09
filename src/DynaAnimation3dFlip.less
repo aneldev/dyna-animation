@@ -1,55 +1,91 @@
 .dyna-animation-3d-flip {
-	@animation-duration: 1s;
+	@animation-duration: 250ms;
+	perspective: 333px; // fallback value, is overridden from javascript!
 
-	perspective: 400px;
 	> div {
-		transition: transform 250ms ease-in-out;
+		transition: transform @animation-duration ease-in-out;
 	}
 
-	@keyframes horizontal-show {
+
+	@keyframes content-horizontal-show {
 		from {
 			transform: rotateY(270deg);
 		}
+		0.001% {
+			opacity: 1;
+			transform: rotateY(270deg);
+		}
 		to {
+			opacity: 1;
 			transform: rotateY(360deg);
 		}
 	}
-	@keyframes horizontal-hide {
-		from {
+	@keyframes content-horizontal-hide {
+		0% {
 			transform: rotateY(0deg);
 		}
-		to {
+		99.999% {
 			transform: rotateY(90deg);
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+			overflow: hidden;
+		}
+	}
+	@keyframes content-vertical-show {
+		from {
+			transform: rotateX(90deg);
+		}
+		0.001% {
+			opacity: 1;
+			transform: rotateX(90deg);
+		}
+		to {
+			opacity: 1;
+			transform: rotateX(0deg);
+		}
+	}
+	@keyframes content-vertical-hide {
+		0% {
+			transform: rotateX(0deg);
+		}
+		99.999% {
+			transform: rotateX(-90deg);
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
 		}
 	}
 
-	@keyframes vertical-show {
-		from {
-			transform: rotateX(270deg);
-		}
-		to {
-			transform: rotateX(360deg);
-		}
-	}
-	@keyframes vertical-hide {
-		from {
-			transform: rotateX(0deg);
-		}
-		to {
-			transform: rotateX(90deg);
-		}
-	}
+	/*	Dev note:
+		Where are the
+			@keyframes container-width-show
+			@keyframes container-width-hide
+			@keyframes container-height-show
+			@keyframes container-height-hide ???
+		Since the width ang height is configrable and browsers doesn't support height: auto
+		for animations, the width and height is updated from javascript.
+		So, these also key frames are "generated" from javascript.
+	*/
 
 	&.animation-show-on {
 		&.flip-direction- {
 			&HORIZONTAL {
+				animation: container-width-show @animation-duration forwards;;
 				> div {
-					animation: horizontal-show @animation-duration forwards;
+					opacity: 0;
+					animation: content-horizontal-show @animation-duration forwards;
+					animation-delay: @animation-duration;
 				}
 			}
 			&VERTICAL {
+				animation: container-height-show @animation-duration forwards;;
 				> div {
-					animation: vertical-show @animation-duration forwards;
+					opacity: 0;
+					animation: content-vertical-show @animation-duration forwards;
+					animation-delay: @animation-duration;
 				}
 			}
 		}
@@ -57,13 +93,17 @@
 	&.animation-show-off {
 		&.flip-direction- {
 			&HORIZONTAL {
+				animation: container-width-hide @animation-duration forwards;
+				animation-delay: @animation-duration;
 				> div {
-					animation: horizontal-hide @animation-duration forwards;
+					animation: content-horizontal-hide @animation-duration forwards;
 				}
 			}
 			&VERTICAL {
+				animation: container-height-hide @animation-duration forwards;
+				animation-delay: @animation-duration;
 				> div {
-					animation: vertical-hide @animation-duration forwards;
+					animation: content-vertical-hide @animation-duration forwards;
 				}
 			}
 		}

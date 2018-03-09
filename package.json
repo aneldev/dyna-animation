@@ -1,10 +1,10 @@
 {
   "name": "dyna-animation",
-  "version": "0.0.1",
-  "description": "About",
+  "version": "1.0.1",
+  "description": "Animations with react",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/aneldev/dyna-animation.git"
   },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

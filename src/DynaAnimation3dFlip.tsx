@@ -8,8 +8,8 @@ export interface IDynaAnimation3dFlipProps {
   className?: string;
   show: boolean;
   perspective: number;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
   direction?: EFlipDirection;
   children: JSX.Element;
 }
@@ -33,7 +33,6 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
   private renderStyle():JSX.Element{
     // render additional needed style, where are the key frames for width and height
     const {
-      className: userClassName,
       width,
       height,
     } = this.props;

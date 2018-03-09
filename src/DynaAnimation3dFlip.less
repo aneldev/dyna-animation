@@ -1,7 +1,6 @@
 .dyna-animation-3d-flip {
 	@animation-duration: 250ms;
 	perspective: 333px; // fallback value, is overridden from javascript!
-	overflow: hidden;
 
 	> div {
 		transition: transform @animation-duration ease-in-out;
@@ -31,6 +30,7 @@
 		}
 		to {
 			opacity: 0;
+			overflow: hidden;
 		}
 	}
 	@keyframes content-vertical-show {

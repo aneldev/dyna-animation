@@ -8,8 +8,8 @@ export interface IDynaAnimation3dFlipProps {
   className?: string;
   show: boolean;
   perspective: number;
-  animateWidth?: number;
-  animateHeight?: number;
+  width?: number;
+  height?: number;
   direction?: EFlipDirection;
   children: JSX.Element;
 }
@@ -24,11 +24,57 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     className: '',
     show: true,
     perspective: 400,
-    animateWidth: null,
-    animateHeight: null,
+    width: null,
+    height: null,
     direction: EFlipDirection.HORIZONTAL,
     children: null,
   };
+
+  private renderStyle():JSX.Element{
+    const {
+      className: userClassName,
+      width,
+      height,
+    } = this.props;
+    return (
+      <style>
+        {`
+             @keyframes container-width-show {
+                from {
+                  width: 0;
+                }
+                to {
+                  width: ${width}px;
+                }
+              }
+              @keyframes container-width-hide {
+                from {
+                  width: ${width}px;
+                }
+                to {
+                  width: 0;
+                }
+              }
+             @keyframes container-height-show {
+                from {
+                  height: 0;
+                }
+                to {
+                  height: ${height}px;
+                }
+              }
+              @keyframes container-height-hide {
+                from {
+                  height: ${height}px;
+                }
+                to {
+                  height: 0;
+                }
+              }
+          `}
+      </style>
+    )
+  }
 
   public render(): JSX.Element {
     const {
@@ -36,8 +82,6 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       show,
       perspective,
       direction,
-      animateWidth,
-      animateHeight,
       children,
     } = this.props;
 
@@ -47,20 +91,14 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       `flip-direction-${direction}`,
     ].join(' ').trim();
 
-    const contentStyle: CSSProperties = {};
-    // if (animateWidth != null) contentStyle.width = `${animateWidth}px`;
-    // if (animateHeight != null) contentStyle.height = `${animateHeight}px`;
-
     return (
       <DynaAnimation
         animations={{show}}
         className={className}
         style={{perspective: `${perspective}px`}}
       >
-        <style>
-          {`body {border: 2px solid red} `}
-        </style>
-        <div>{React.cloneElement(children, {style: contentStyle})}</div>
+        {this.renderStyle()}
+        <div>{children}</div>
       </DynaAnimation>
     );
   }

@@ -69,6 +69,13 @@ The `children` you will pass (only one child is supported) should occupy all the
 
 * _required_
 
+### CSSTransition support (v1)
+
+`DynaAnimation3dFlip` supports the [CSSTransition v1](https://github.com/reactjs/react-transition-group/tree/v1-stable).
+
+Just drop the items into the `CSSTransition` and set the `transitionName="animation-show"`. 
+
+
 ### Example:
 
 ```

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {IShowcaseView} from "dyna-showcase/dist/interfaces";
-import {DynaAnimation3dFlip, EFlipDirection, IDynaAnimation3dFlipProps} from "../../src/DynaAnimation3dFlip";
+import {DynaAnimation3dFlip, EAnimationDuration, EFlipDirection, IDynaAnimation3dFlipProps} from "../../src/DynaAnimation3dFlip";
 
 import "./flip-3d-item-show-hide.less";
 
@@ -14,6 +14,7 @@ export const showcaseView: IShowcaseView = {
       perspective={400}
       width={400}
       height={150}
+      duration={EAnimationDuration.S1}
     >
       <div className="my-flip-3d-item">content</div>
     </DynaAnimation3dFlip>

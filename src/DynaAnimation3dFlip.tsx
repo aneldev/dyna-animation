@@ -2,7 +2,6 @@ import * as React from 'react';
 import {DynaAnimation} from "./DynaAnimation";
 
 import "./DynaAnimation3dFlip.less";
-import {CSSProperties} from "react";
 
 export interface IDynaAnimation3dFlipProps {
   className?: string;
@@ -10,6 +9,7 @@ export interface IDynaAnimation3dFlipProps {
   perspective: number;
   width: number;
   height: number;
+  duration?: EAnimationDuration;
   direction?: EFlipDirection;
   children: JSX.Element;
 }
@@ -19,6 +19,15 @@ export enum EFlipDirection {
   VERTICAL = "VERTICAL",
 }
 
+export enum EAnimationDuration {
+  MS50 = "MS50",
+  MS100 = "MS100",
+  MS250 = "MS250",
+  MS500 = "MS500",
+  MS750 = "MS750",
+  S1 = "S1",
+}
+
 export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipProps> {
   static defaultProps: IDynaAnimation3dFlipProps = {
     className: '',
@@ -26,6 +35,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     perspective: 400,
     width: null,
     height: null,
+    duration: EAnimationDuration.MS250,
     direction: EFlipDirection.HORIZONTAL,
     children: null,
   };
@@ -84,6 +94,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       direction,
       width,
       height,
+      duration,
       children,
     } = this.props;
 
@@ -91,6 +102,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       "dyna-animation-3d-flip",
       userClassName,
       `flip-direction-${direction}`,
+      `dyna-animation-3d-flip--duration-${duration}`
     ].join(' ').trim();
 
     const child: JSX.Element = React.cloneElement(
@@ -100,8 +112,8 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
 
     return (
       <DynaAnimation
-        animations={{show}}
         className={className}
+        animations={{show}}
         style={{perspective: `${perspective}px`}}
       >
         {this.renderStyle()}

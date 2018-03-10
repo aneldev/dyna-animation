@@ -1,11 +1,65 @@
 .dyna-animation-3d-flip {
-	@animation-duration: 250ms;
 	perspective: 333px; // fallback value, is overridden from javascript!
 
-	> div {
-		transition: transform @animation-duration ease-in-out;
-	}
+	.createByDuration(MS50, 50ms);
+	.createByDuration(MS100, 100ms);
+	.createByDuration(MS250, 250ms);
+	.createByDuration(MS500, 500ms);
+	.createByDuration(MS750, 750ms);
+	.createByDuration(S1, 1s);
+	.createByDuration(@durationName, @durationValue) {
+		&.dyna-animation-3d-flip--duration-@{durationName} {
 
+			// createByDuration --- content --- begin
+
+			> div {
+				transition: transform @durationValue ease-in-out;
+			}
+
+			&.animation-show-on {
+				&.flip-direction- {
+					&HORIZONTAL {
+						animation: container-width-show @durationValue forwards;;
+						> div {
+							opacity: 0;
+							animation: content-horizontal-show @durationValue forwards;
+
+							animation-delay: @durationValue;
+						}
+					}
+					&VERTICAL {
+						animation: container-height-show @durationValue forwards;;
+						> div {
+							opacity: 0;
+							animation: content-vertical-show @durationValue forwards;
+							animation-delay: @durationValue;
+						}
+					}
+				}
+			}
+			&.animation-show-off {
+				&.flip-direction- {
+					&HORIZONTAL {
+						animation: container-width-hide @durationValue forwards;
+						animation-delay: @durationValue;
+						> div {
+							animation: content-horizontal-hide @durationValue forwards;
+						}
+					}
+					&VERTICAL {
+						animation: container-height-hide @durationValue forwards;
+						animation-delay: @durationValue;
+						> div {
+							animation: content-vertical-hide @durationValue forwards;
+						}
+					}
+				}
+			}
+
+			// createByDuration --- content --- end
+
+		}
+	}
 
 	@keyframes content-horizontal-show {
 		from {
@@ -65,47 +119,8 @@
 			@keyframes container-width-hide
 			@keyframes container-height-show
 			@keyframes container-height-hide ???
-		Since the width ang height is configrable and browsers doesn't support height: auto
+		Since the width ang height is configurable and browsers doesn't support height: auto
 		for animations, the width and height is updated from javascript.
 		So, these also key frames are "generated" from javascript.
 	*/
-
-	&.animation-show-on {
-		&.flip-direction- {
-			&HORIZONTAL {
-				animation: container-width-show @animation-duration forwards;;
-				> div {
-					opacity: 0;
-					animation: content-horizontal-show @animation-duration forwards;
-					animation-delay: @animation-duration;
-				}
-			}
-			&VERTICAL {
-				animation: container-height-show @animation-duration forwards;;
-				> div {
-					opacity: 0;
-					animation: content-vertical-show @animation-duration forwards;
-					animation-delay: @animation-duration;
-				}
-			}
-		}
-	}
-	&.animation-show-off {
-		&.flip-direction- {
-			&HORIZONTAL {
-				animation: container-width-hide @animation-duration forwards;
-				animation-delay: @animation-duration;
-				> div {
-					animation: content-horizontal-hide @animation-duration forwards;
-				}
-			}
-			&VERTICAL {
-				animation: container-height-hide @animation-duration forwards;
-				animation-delay: @animation-duration;
-				> div {
-					animation: content-vertical-hide @animation-duration forwards;
-				}
-			}
-		}
-	}
 }

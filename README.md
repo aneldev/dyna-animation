@@ -62,6 +62,7 @@ The `children` you will pass (only one child is supported) should occupy all the
 - `className`: string - optional, is not needed really, use it only for position or margins etc
 - `show`: boolean - nothing much to say about this, it shows the content or not with animations
 - `width` and `height` - as described above
+- `duration`: EAnimationDuration - The duration of the animation, possible values are `MS50` (for 50ms), `MS100`, `MS250`, `MS500`, `MS750` and `S1`; are you Typescript fun? these values are available from `EAnimationDuration` enum
 - `perspective`: number - this the css perspective, it is different according the `width` _or_ `height`, the ideal is to be the same with the width, _play around with it_
 - `direction`: EFlipDirection - use `HORIZONTAL` or `VERTICAL` and if you white in Typescipt there are enums and you can use the `EFlipDirection.HORIZONTAL` or the `EFlipDirection.VERTICAL` respectively.
 - `children`: JSX.Element - Only one child is supported, this child should occupy the whole given area (this means `width: 100%` and `height: 100%` or something similar).

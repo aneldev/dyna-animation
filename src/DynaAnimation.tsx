@@ -17,6 +17,30 @@ export class DynaAnimation extends React.Component<IDynaAnimationProps> {
     children: null,
   };
 
+  private getClassNameForDynaAnimations(): string[] {
+    const {animations} = this.props;
+    return Object.keys(animations)
+      .map((animationName: string) => {
+        if (animations[animationName] != null) {
+          return `animation-${animationName}-${animations[animationName] ? 'on' : 'off'}`;
+        }
+        return null;
+      })
+      .filter((v: string) => !!v);
+  };
+
+  private getClassNameForCssTransitions(): string[] {
+    const {animations} = this.props;
+    return Object.keys(animations)
+      .map((animationName: string) => {
+        if (animations[animationName] != null) {
+          return `css-transition-${animationName}-${animations[animationName] ? 'enter' : 'leave'}`;
+        }
+        return null;
+      })
+      .filter((v: string) => !!v);
+  };
+
   public render(): JSX.Element {
     const {
       className: userClassName,
@@ -28,7 +52,8 @@ export class DynaAnimation extends React.Component<IDynaAnimationProps> {
     const className: string = [
       'dyna-animation',
       userClassName || '',
-      Object.keys(animations).map((animationName: string) => `animation-${animationName}-${animations[animationName] ? 'on' : 'off'}`).join(' '),
+      ...this.getClassNameForDynaAnimations(),
+      ...this.getClassNameForCssTransitions(),
     ].join(' ').trim();
 
     return (

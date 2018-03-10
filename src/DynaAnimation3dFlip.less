@@ -8,18 +8,18 @@
 	.createByDuration(MS750, 750ms);
 	.createByDuration(S1, 1s);
 	.createByDuration(@durationName, @durationValue) {
-		&.dyna-animation-3d-flip--duration-@{durationName} {
 
-			// createByDuration --- content --- begin
+			&.dyna-animation-3d-flip--duration-@{durationName} {
 
 			> div {
 				transition: transform @durationValue ease-in-out;
 			}
 
-			&.animation-show-on {
+			&.animation-show-on:not(.animation-show-leave), // using css-transtions, the show is always true, so on leave do not show it!
+			&.animation-show-enter {
 				&.flip-direction- {
 					&HORIZONTAL {
-						animation: container-width-show @durationValue forwards;;
+						animation: container-width-show @durationValue forwards;
 						> div {
 							opacity: 0;
 							animation: content-horizontal-show @durationValue forwards;
@@ -28,7 +28,7 @@
 						}
 					}
 					&VERTICAL {
-						animation: container-height-show @durationValue forwards;;
+						animation: container-height-show @durationValue forwards;
 						> div {
 							opacity: 0;
 							animation: content-vertical-show @durationValue forwards;
@@ -37,7 +37,8 @@
 					}
 				}
 			}
-			&.animation-show-off {
+			&.animation-show-off,
+			&.animation-show-leave {
 				&.flip-direction- {
 					&HORIZONTAL {
 						animation: container-width-hide @durationValue forwards;
@@ -56,9 +57,8 @@
 				}
 			}
 
-			// createByDuration --- content --- end
-
 		}
+
 	}
 
 	@keyframes content-horizontal-show {

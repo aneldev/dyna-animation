@@ -6,7 +6,7 @@ import "./DynaAnimation3dFlip.less";
 
 export interface IDynaAnimation3dFlipProps {
   className?: string;
-  show: boolean;
+  show?: boolean;
   perspective: number;
   width: number;
   height: number;

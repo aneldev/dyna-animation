@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {IShowcaseView} from "dyna-showcase/dist/interfaces";
-import {DynaAnimation3dFlip, EAnimationDuration, EFlipDirection, IDynaAnimation3dFlipProps} from "../../src/DynaAnimation3dFlip";
+import {DynaAnimation3dFlip, IDynaAnimation3dFlipProps} from "../../src/DynaAnimation3dFlip";
+import {EAnimationDuration, EOrientation} from "../../src/interfaces";
 
 import "./flip-3d-item-show-hide.less";
 
@@ -24,7 +25,7 @@ export const showcaseView: IShowcaseView = {
       slug: 'show horizontal',
       title: 'show-horizontal',
       props: {
-        direction: EFlipDirection.HORIZONTAL,
+        direction: EOrientation.HORIZONTAL,
         show: true,
       } as IDynaAnimation3dFlipProps,
     },
@@ -32,7 +33,7 @@ export const showcaseView: IShowcaseView = {
       slug: 'hide horizontal',
       title: 'hide-horizontal',
       props: {
-        direction: EFlipDirection.HORIZONTAL,
+        direction: EOrientation.HORIZONTAL,
         show: false,
       }
     },
@@ -40,7 +41,7 @@ export const showcaseView: IShowcaseView = {
       slug: 'show vertical',
       title: 'show-vertical',
       props: {
-        direction: EFlipDirection.VERTICAL,
+        direction: EOrientation.VERTICAL,
         show: true,
       } as IDynaAnimation3dFlipProps,
     },
@@ -48,7 +49,7 @@ export const showcaseView: IShowcaseView = {
       slug: 'hide vertical',
       title: 'hide-vertical',
       props: {
-        direction: EFlipDirection.VERTICAL,
+        direction: EOrientation.VERTICAL,
         show: false,
       }
     },

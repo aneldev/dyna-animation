@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {DynaAnimation} from "./DynaAnimation";
+import {EAnimationDuration, EOrientation} from "./interfaces";
 
 import "./DynaAnimation3dFlip.less";
 
@@ -10,22 +11,8 @@ export interface IDynaAnimation3dFlipProps {
   width: number;
   height: number;
   duration?: EAnimationDuration;
-  direction?: EFlipDirection;
+  direction?: EOrientation;
   children: JSX.Element;
-}
-
-export enum EFlipDirection {
-  HORIZONTAL = "HORIZONTAL",
-  VERTICAL = "VERTICAL",
-}
-
-export enum EAnimationDuration {
-  MS50 = "MS50",
-  MS100 = "MS100",
-  MS250 = "MS250",
-  MS500 = "MS500",
-  MS750 = "MS750",
-  S1 = "S1",
 }
 
 export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipProps> {
@@ -36,7 +23,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     width: null,
     height: null,
     duration: EAnimationDuration.MS250,
-    direction: EFlipDirection.HORIZONTAL,
+    direction: EOrientation.HORIZONTAL,
     children: null,
   };
 

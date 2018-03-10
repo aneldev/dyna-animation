@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IShowcaseView} from "dyna-showcase/dist/interfaces";
-import {DynaAnimation3dFlip, IDynaAnimation3dFlipProps} from "../../src/DynaAnimation3dFlip";
-import {EAnimationDuration, EOrientation} from "../../src/interfaces";
+import {DynaAnimation3dFlip, IDynaAnimation3dFlipProps} from "../../src";
+import {EAnimationDuration, EOrientation} from "../../src";
 
 import "./flip-3d-item-show-hide.less";
 

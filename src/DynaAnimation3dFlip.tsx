@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {DynaAnimation} from "./DynaAnimation";
-import {EAnimationDuration, EOrientation} from "./interfaces";
+import {EAnimationDuration, EOrientation, TAnimationConfig} from "./interfaces";
 
 import "./DynaAnimation3dFlip.less";
 
 export interface IDynaAnimation3dFlipProps {
   className?: string;
-  show: boolean;
+  show?: boolean;
   perspective: number;
   width: number;
   height: number;
@@ -97,10 +97,13 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       {style: {width: width + 'px', height: height + 'px'}}
       );
 
+    const animations: TAnimationConfig = {};
+    if (show != null) animations.show = show;
+
     return (
       <DynaAnimation
         className={className}
-        animations={{show}}
+        animations={animations}
         style={{perspective: `${perspective}px`}}
       >
         {this.renderStyle()}

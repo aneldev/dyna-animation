@@ -1,3 +1,7 @@
+export type TAnimationConfig = {
+  [animationName: string]: boolean;
+}
+
 export enum EOrientation {
   HORIZONTAL = "HORIZONTAL",
   VERTICAL = "VERTICAL",

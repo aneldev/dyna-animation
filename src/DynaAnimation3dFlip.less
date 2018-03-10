@@ -8,57 +8,53 @@
 	.createByDuration(MS750, 750ms);
 	.createByDuration(S1, 1s);
 	.createByDuration(@durationName, @durationValue) {
+
 		&.dyna-animation-3d-flip--duration-@{durationName} {
 
-			// createByDuration --- content --- begin
-
-			> div {
-				transition: transform @durationValue ease-in-out;
-			}
-
-			&.animation-show-on {
+			&.animation-show-on:not(.animation-show-leave), // using css-transtions, the show is always true, so on leave do not show it!
+			&.animation-show-enter {
 				&.flip-direction- {
 					&HORIZONTAL {
-						animation: container-width-show @durationValue forwards;;
+						animation: container-width-show (@durationValue/2) forwards;
 						> div {
 							opacity: 0;
-							animation: content-horizontal-show @durationValue forwards;
+							animation: content-horizontal-show (@durationValue/2) forwards;
 
-							animation-delay: @durationValue;
+							animation-delay: (@durationValue/2);
 						}
 					}
 					&VERTICAL {
-						animation: container-height-show @durationValue forwards;;
+						animation: container-height-show (@durationValue/2) forwards;
 						> div {
 							opacity: 0;
-							animation: content-vertical-show @durationValue forwards;
-							animation-delay: @durationValue;
+							animation: content-vertical-show (@durationValue/2) forwards;
+							animation-delay: (@durationValue/2);
 						}
 					}
 				}
 			}
-			&.animation-show-off {
+			&.animation-show-off,
+			&.animation-show-leave {
 				&.flip-direction- {
 					&HORIZONTAL {
-						animation: container-width-hide @durationValue forwards;
-						animation-delay: @durationValue;
+						animation: container-width-hide (@durationValue/2) forwards;
+						animation-delay: (@durationValue/2);
 						> div {
-							animation: content-horizontal-hide @durationValue forwards;
+							animation: content-horizontal-hide (@durationValue/2) forwards;
 						}
 					}
 					&VERTICAL {
-						animation: container-height-hide @durationValue forwards;
-						animation-delay: @durationValue;
+						animation: container-height-hide (@durationValue/2) forwards;
+						animation-delay: (@durationValue/2);
 						> div {
-							animation: content-vertical-hide @durationValue forwards;
+							animation: content-vertical-hide (@durationValue/2) forwards;
 						}
 					}
 				}
 			}
-
-			// createByDuration --- content --- end
 
 		}
+
 	}
 
 	@keyframes content-horizontal-show {

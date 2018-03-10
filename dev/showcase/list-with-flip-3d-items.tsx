@@ -13,6 +13,9 @@ export const showcaseView: IShowcaseView = {
   center: true,
   component: (() => {
 
+    const eDuration: EAnimationDuration = EAnimationDuration.MS500;
+    const duration: number = 500;
+
     interface IMyItemProps {
       content: string;
     }
@@ -23,7 +26,7 @@ export const showcaseView: IShowcaseView = {
           <DynaAnimation3dFlip
             show={true}
             direction={EOrientation.VERTICAL}
-            duration={EAnimationDuration.MS250}
+            duration={eDuration}
             perspective={400}
             width={400}
             height={52}
@@ -54,8 +57,8 @@ export const showcaseView: IShowcaseView = {
           <div className="my-app-list-animated-items-demo">
             <CSSTransitionGroup
               transitionName="animation-show"
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
+              transitionEnterTimeout={duration}
+              transitionLeaveTimeout={duration}
             >
               {items.map((item: IData) => {
                 return <MyItem key={item.key} content={item.content}/>;
@@ -128,7 +131,6 @@ export const showcaseView: IShowcaseView = {
     {
       slug: 'set-4',
       title: 'odds',
-      description: 'all 10, without the 2nd',
       props: {
         items: [
           {key: '#1', content: 'content 1'},
@@ -142,13 +144,25 @@ export const showcaseView: IShowcaseView = {
     {
       slug: 'set-5',
       title: 'evens',
-      description: 'all 10, without the 2nd',
       props: {
         items: [
           {key: '#2', content: 'content 2'},
           {key: '#4', content: 'content 4'},
           {key: '#6', content: 'content 6'},
           {key: '#8', content: 'content 8'},
+          {key: '#10', content: 'content 10'},
+        ]
+      },
+    },
+    {
+      slug: 'set-5-mixed',
+      title: 'evens mixed',
+      props: {
+        items: [
+          {key: '#2', content: 'content 2'},
+          {key: '#6', content: 'content 6'},
+          {key: '#8', content: 'content 8'},
+          {key: '#4', content: 'content 4'},
           {key: '#10', content: 'content 10'},
         ]
       },

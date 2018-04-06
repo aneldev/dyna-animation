@@ -216,10 +216,10 @@ var DynaAnimation3dFlip = /** @class */ (function (_super) {
     __extends(DynaAnimation3dFlip, _super);
     function DynaAnimation3dFlip(props) {
         var _this = _super.call(this, props) || this;
-        var _a = _this.props, width = _a.width, height = _a.height;
-        if (!width && interfaces_1.EOrientation.HORIZONTAL)
+        var _a = _this.props, direction = _a.direction, width = _a.width, height = _a.height;
+        if (!width && direction === interfaces_1.EOrientation.HORIZONTAL)
             console.error('DynaAnimation3dFlip: Error, width should be defined for direction: EOrientation.HORIZONTAL');
-        if (!height && interfaces_1.EOrientation.VERTICAL)
+        if (!height && direction === interfaces_1.EOrientation.VERTICAL)
             console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
         return _this;
     }

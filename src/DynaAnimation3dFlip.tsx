@@ -30,9 +30,9 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
 
   constructor(props: IDynaAnimation3dFlipProps) {
     super(props);
-    const {width, height} = this.props;
-    if (!width && EOrientation.HORIZONTAL) console.error('DynaAnimation3dFlip: Error, width should be defined for direction: EOrientation.HORIZONTAL');
-    if (!height && EOrientation.VERTICAL) console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
+    const {direction, width, height} = this.props;
+    if (!width && direction === EOrientation.HORIZONTAL) console.error('DynaAnimation3dFlip: Error, width should be defined for direction: EOrientation.HORIZONTAL');
+    if (!height && direction === EOrientation.VERTICAL) console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
   }
 
   private renderStyle():JSX.Element{

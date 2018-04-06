@@ -11,6 +11,9 @@ export const showcaseView: IShowcaseView = {
   slug: 'list-flip-3d-item',
   title: 'List with Flip-3d Items',
   center: true,
+  wrapperStyle:{
+    width: "100%",
+  },
   component: (() => {
 
     const eDuration: EAnimationDuration = EAnimationDuration.MS500;
@@ -28,7 +31,6 @@ export const showcaseView: IShowcaseView = {
             direction={EOrientation.VERTICAL}
             duration={eDuration}
             perspective={400}
-            width={400}
             height={52}
           >
             <div className="my-listed-item">{this.props.content}</div>

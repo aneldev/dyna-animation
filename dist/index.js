@@ -214,13 +214,21 @@ var interfaces_1 = __webpack_require__(2);
 __webpack_require__(6);
 var DynaAnimation3dFlip = /** @class */ (function (_super) {
     __extends(DynaAnimation3dFlip, _super);
-    function DynaAnimation3dFlip() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function DynaAnimation3dFlip(props) {
+        var _this = _super.call(this, props) || this;
+        var _a = _this.props, width = _a.width, height = _a.height;
+        if (!width && interfaces_1.EOrientation.HORIZONTAL)
+            console.error('DynaAnimation3dFlip: Error, width should be defined for direction: EOrientation.HORIZONTAL');
+        if (!height && interfaces_1.EOrientation.VERTICAL)
+            console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
+        return _this;
     }
     DynaAnimation3dFlip.prototype.renderStyle = function () {
         // render additional needed style, where are the key frames for width and height
         var _a = this.props, width = _a.width, height = _a.height;
-        return (React.createElement("style", null, "\n             @keyframes container-width-show {\n                from {\n                  width: 0;\n                }\n                to {\n                    width: " + width + "px;\n                }\n              }\n              @keyframes container-width-hide {\n                from {\n                  width: " + width + "px;\n                }\n                to {\n                  width: 0;\n                }\n              }\n             @keyframes container-height-show {\n                from {\n                  height: 0;\n                }\n                to {\n                  height: " + height + "px;\n                }\n              }\n              @keyframes container-height-hide {\n                from {\n                  height: " + height + "px;\n                }\n                to {\n                  height: 0;\n                }\n              }\n          "));
+        return (React.createElement("style", null,
+            width ? "\n             @keyframes container-width-show {\n                from {\n                  width: 0;\n                }\n                to {\n                    width: " + width + "px;\n                }\n              }\n              @keyframes container-width-hide {\n                from {\n                  width: " + width + "px;\n                }\n                to {\n                  width: 0;\n                }\n              }\n          " : "",
+            height ? "\n             @keyframes container-height-show {\n                from {\n                  height: 0;\n                }\n                to {\n                  height: " + height + "px;\n                }\n              }\n              @keyframes container-height-hide {\n                from {\n                  height: " + height + "px;\n                }\n                to {\n                  height: 0;\n                }\n              }\n          " : ""));
     };
     DynaAnimation3dFlip.prototype.render = function () {
         var _a = this.props, userClassName = _a.className, show = _a.show, perspective = _a.perspective, direction = _a.direction, width = _a.width, height = _a.height, duration = _a.duration, children = _a.children;
@@ -230,7 +238,12 @@ var DynaAnimation3dFlip = /** @class */ (function (_super) {
             "flip-direction-" + direction,
             "dyna-animation-3d-flip--duration-" + duration
         ].join(' ').trim();
-        var child = React.cloneElement(children, { style: { width: width + 'px', height: height + 'px' } });
+        var style = {};
+        if (width)
+            style.width = width + 'px';
+        if (height)
+            style.height = height + 'px';
+        var child = React.cloneElement(children, { style: style });
         var animations = {};
         if (show != null)
             animations.show = show;

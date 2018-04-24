@@ -91,8 +91,6 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     const animations: TAnimationConfig = {};
     if (show != null) animations.show = show;
 
-    console.debug('render', {show, height: this.getContainerStyle().height});
-
     return (
       <DynaAnimation
         className={className}

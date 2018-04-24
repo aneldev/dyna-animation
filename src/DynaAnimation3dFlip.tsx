@@ -13,7 +13,7 @@ export interface IDynaAnimation3dFlipProps {
   height?: number;
   duration?: EAnimationDuration;
   direction?: EOrientation;
-  children: JSX.Element;
+  children: JSX.Element;  // actually is child!
 }
 
 export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipProps> {
@@ -35,62 +35,43 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     if (!height && direction === EOrientation.VERTICAL) console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
   }
 
-  private renderStyle():JSX.Element{
-    // render additional needed style, where are the key frames for width and height
+  private getContainerStyle(): CSSProperties {
+    const {
+      show,
+      perspective,
+      width,
+      height,
+    } = this.props;
+
+    const outputStyle: CSSProperties = {
+      perspective: `${perspective}px`,
+    };
+
+    if (width) outputStyle.width = `${width}px`;
+    if (height) outputStyle.height = `${height}px`;
+
+    return outputStyle;
+  }
+
+  private getChildStyle(): CSSProperties {
     const {
       width,
       height,
     } = this.props;
-    return (
-      <style>
-        {width ? `
-             @keyframes container-width-show {
-                from {
-                  width: 0;
-                }
-                to {
-                    width: ${width}px;
-                }
-              }
-              @keyframes container-width-hide {
-                from {
-                  width: ${width}px;
-                }
-                to {
-                  width: 0;
-                }
-              }
-          ` : ""}
-        {height ? `
-             @keyframes container-height-show {
-                from {
-                  height: 0;
-                }
-                to {
-                  height: ${height}px;
-                }
-              }
-              @keyframes container-height-hide {
-                from {
-                  height: ${height}px;
-                }
-                to {
-                  height: 0;
-                }
-              }
-          ` : ""}
-      </style>
-    )
+
+    const outputStyle: CSSProperties = {};
+
+    if (width) outputStyle.width = `${width}px`;
+    if (height) outputStyle.height = `${height}px`;
+
+    return outputStyle;
   }
 
   public render(): JSX.Element {
     const {
       className: userClassName,
       show,
-      perspective,
       direction,
-      width,
-      height,
       duration,
       children,
     } = this.props;
@@ -102,25 +83,22 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       `dyna-animation-3d-flip--duration-${duration}`
     ].join(' ').trim();
 
-    const style: CSSProperties = {};
-    if (width) style.width = width + 'px';
-    if (height) style.height = height + 'px';
-
     const child: JSX.Element = React.cloneElement(
       children,
-      {style}
+      {style: this.getChildStyle()}
       );
 
     const animations: TAnimationConfig = {};
     if (show != null) animations.show = show;
 
+    console.debug('render', {show, height: this.getContainerStyle().height});
+
     return (
       <DynaAnimation
         className={className}
         animations={animations}
-        style={{perspective: `${perspective}px`}}
+        style={this.getContainerStyle()}
       >
-        {this.renderStyle()}
         <div>{child}</div>
       </DynaAnimation>
     );

@@ -1,122 +1,120 @@
 .dyna-animation-3d-flip {
-	perspective: 333px; // fallback value, is overridden from javascript!
+  perspective: 333px; // fallback value, is overridden from javascript!
 
-	.createByDuration(MS50, 50ms);
-	.createByDuration(MS100, 100ms);
-	.createByDuration(MS250, 250ms);
-	.createByDuration(MS500, 500ms);
-	.createByDuration(MS750, 750ms);
-	.createByDuration(S1, 1s);
-	.createByDuration(@durationName, @durationValue) {
+  .createByDuration(MS50, 50ms);
+  .createByDuration(MS100, 100ms);
+  .createByDuration(MS250, 250ms);
+  .createByDuration(MS500, 500ms);
+  .createByDuration(MS750, 750ms);
+  .createByDuration(S1, 1s);
+  .createByDuration(@durationName, @durationValue) {
 
-		&.dyna-animation-3d-flip--duration-@{durationName} {
+    &.dyna-animation-3d-flip--duration-@{durationName} {
 
-			&.animation-show-on:not(.animation-show-leave), // using css-transtions, the show is always true, so on leave do not show it!
-			&.animation-show-enter {
-				&.flip-direction- {
-					&HORIZONTAL {
-						animation: container-width-show (@durationValue/2) forwards;
-						> div {
-							opacity: 0;
-							animation: content-horizontal-show (@durationValue/2) forwards;
+      &.flip-direction- {
+        &VERTICAL {
+          height: 0;
+          transition: height (@durationValue/2) linear;
+        }
+      }
 
-							animation-delay: (@durationValue/2);
-						}
-					}
-					&VERTICAL {
-						animation: container-height-show (@durationValue/2) forwards;
-						> div {
-							opacity: 0;
-							animation: content-vertical-show (@durationValue/2) forwards;
-							animation-delay: (@durationValue/2);
-						}
-					}
-				}
-			}
-			&.animation-show-off,
-			&.animation-show-leave {
-				&.flip-direction- {
-					&HORIZONTAL {
-						animation: container-width-hide (@durationValue/2) forwards;
-						animation-delay: (@durationValue/2);
-						> div {
-							animation: content-horizontal-hide (@durationValue/2) forwards;
-						}
-					}
-					&VERTICAL {
-						animation: container-height-hide (@durationValue/2) forwards;
-						animation-delay: (@durationValue/2);
-						> div {
-							animation: content-vertical-hide (@durationValue/2) forwards;
-						}
-					}
-				}
-			}
+      &.animation-show-on:not(.animation-show-leave), // using css-transitions, the show is always true, so on leave do not show it!
+      &.animation-show-enter {
+        &.flip-direction- {
+          &HORIZONTAL {
+            animation: container-width-show (@durationValue/2) forwards;
+            transition: width (@durationValue/2) linear;
+            > div {
+              opacity: 0;
+              animation: content-horizontal-show (@durationValue/2) forwards;
 
-		}
+              animation-delay: (@durationValue/2);
+            }
+          }
+          &VERTICAL {
+            transition: height (@durationValue/2) linear;
+            > div {
+              opacity: 0;
+              animation: content-vertical-show (@durationValue/2) forwards;
+              animation-delay: (@durationValue/2);
+            }
+          }
+        }
+      }
+      &.animation-show-off,
+      &.animation-show-leave {
+        &.flip-direction- {
+          &HORIZONTAL {
+            transition: width (@durationValue/2) linear;
+            transition-delay: (@durationValue/2);
+            > div {
+              animation: content-horizontal-hide (@durationValue/2) forwards;
+            }
+          }
+          &VERTICAL {
+            height: 0 !important;
+            transition: height (@durationValue/2) linear;
+            transition-delay: (@durationValue/2);
+            > div {
+              animation: content-vertical-hide (@durationValue/2) forwards;
+            }
+          }
+        }
+      }
 
-	}
+    }
 
-	@keyframes content-horizontal-show {
-		from {
-			transform: rotateY(270deg);
-		}
-		0.001% {
-			opacity: 1;
-			transform: rotateY(270deg);
-		}
-		to {
-			opacity: 1;
-			transform: rotateY(360deg);
-		}
-	}
-	@keyframes content-horizontal-hide {
-		0% {
-			transform: rotateY(0deg);
-		}
-		99.999% {
-			transform: rotateY(90deg);
-			opacity: 1;
-		}
-		to {
-			opacity: 0;
-			overflow: hidden;
-		}
-	}
-	@keyframes content-vertical-show {
-		from {
-			transform: rotateX(90deg);
-		}
-		0.001% {
-			opacity: 1;
-			transform: rotateX(90deg);
-		}
-		to {
-			opacity: 1;
-			transform: rotateX(0deg);
-		}
-	}
-	@keyframes content-vertical-hide {
-		0% {
-			transform: rotateX(0deg);
-		}
-		99.999% {
-			transform: rotateX(-90deg);
-			opacity: 1;
-		}
-		to {
-			opacity: 0;
-		}
-	}
+  }
 
-	/*	Dev note:
-		Where are the
-			@keyframes container-width-show
-			@keyframes container-width-hide
-			@keyframes container-height-show
-			@keyframes container-height-hide ???
-		Since the width ang height is configurable and browsers doesn't support height: auto
-		for animations, the width and height is updated from javascript.
-		So, these also key frames are "generated" from javascript.
-	*/
+  @keyframes content-horizontal-show {
+    from {
+      transform: rotateY(270deg);
+    }
+    0.001% {
+      opacity: 1;
+      transform: rotateY(270deg);
+    }
+    to {
+      opacity: 1;
+      transform: rotateY(360deg);
+    }
+  }
+  @keyframes content-horizontal-hide {
+    0% {
+      transform: rotateY(0deg);
+    }
+    99.999% {
+      transform: rotateY(90deg);
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+  @keyframes content-vertical-show {
+    from {
+      transform: rotateX(90deg);
+    }
+    0.001% {
+      opacity: 1;
+      transform: rotateX(90deg);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0deg);
+    }
+  }
+  @keyframes content-vertical-hide {
+    0% {
+      transform: rotateX(0deg);
+    }
+    99.999% {
+      transform: rotateX(-90deg);
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 }

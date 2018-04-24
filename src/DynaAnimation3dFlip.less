@@ -11,13 +11,6 @@
 
     &.dyna-animation-3d-flip--duration-@{durationName} {
 
-      &.flip-direction- {
-        &VERTICAL {
-          height: 0;
-          transition: height (@durationValue/2) linear;
-        }
-      }
-
       &.animation-show-on:not(.animation-show-leave), // using css-transitions, the show is always true, so on leave do not show it!
       &.animation-show-enter {
         &.flip-direction- {
@@ -32,6 +25,7 @@
             }
           }
           &VERTICAL {
+            height: 0;
             transition: height (@durationValue/2) linear;
             > div {
               opacity: 0;

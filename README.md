@@ -93,8 +93,13 @@ Just drop the items into the `CSSTransition` and set the `transitionName="animat
 
 [DynaAnimation3dFlip example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/flip-3d-item-show-hide.less)
 
-### Known issues - you can't change dynamically the `width` and `height`
+# Known issues 
 
-Actually you can, but it _jumps_. The new dimension is not applied smoothly.
+## DynaAnimation3dFlip
 
-This comes from the point that the keyframes are handling the animations and you cannot apply transition and animation on the same css attributes. _Forks also are welcome_.  
+The background transparent space jumps on enter.
+
+This is caused from th js height definition that cannot be overridden from the css.
+
+To solve there is need to use the `TransitionGroup` and control the height from js only through it's events.
+  

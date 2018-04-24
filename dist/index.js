@@ -255,7 +255,6 @@ var DynaAnimation3dFlip = /** @class */ (function (_super) {
         var animations = {};
         if (show != null)
             animations.show = show;
-        console.debug('render', { show: show, height: this.getContainerStyle().height });
         return (React.createElement(DynaAnimation_1.DynaAnimation, { className: className, animations: animations, style: this.getContainerStyle() },
             React.createElement("div", null, child)));
     };

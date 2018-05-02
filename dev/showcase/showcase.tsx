@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {showcaseView as oneItemShowcaseView} from "./simple-one-element-animation";
 import {showcaseView as flip3dItemShocaseView} from "./flip-3d-item-show-hide";
-import {showcaseView as listWithflip3dItemsShocaseView} from "./list-with-flip-3d-items";
+import {showcaseView as listWithFlip3dItemsShowcaseView} from "./list-with-flip-3d-items";
+import {showcaseView as verticalContainerShowcase} from "./vertical-container";
 
 import {faIcon, IShowcase} from "dyna-showcase";
 import {Logo} from "../logo";
@@ -33,7 +34,9 @@ export default {
 
     flip3dItemShocaseView,
 
-    listWithflip3dItemsShocaseView,
+    listWithFlip3dItemsShowcaseView,
+
+    verticalContainerShowcase,
 
     {
       slug: 'the-end',

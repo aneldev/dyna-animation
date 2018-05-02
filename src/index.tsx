@@ -11,3 +11,6 @@ export {
   EAnimationDuration,
 } from "./interfaces";
 
+export {
+  DynaAnimationVerticalContainer, IDynaAnimationVerticalContainerProps,
+} from "./DynaAnimationVerticalContainer";

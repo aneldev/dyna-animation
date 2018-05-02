@@ -16,9 +16,7 @@ Version stable.
 
 [General adnimation less mixins](https://github.com/aneldev/dyna-animation/blob/master/dyna-animation-mixins.less)
 
-# React components
-
-## DynaAnimation
+# DynaAnimation
 
 This is the core component.
 
@@ -47,7 +45,7 @@ When the value is `true` applies `on` and when it is `false` applied `off`.
 
 [DynaAnimation example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/simple-one-element-animation.less)
 
-## `DynaAnimation3dFlip` - Dyna Animation 3d Flip
+# `DynaAnimation3dFlip` - Dyna Animation 3d Flip
 
 This container flips the content vertically or horizontally like 3d card.
 
@@ -57,7 +55,7 @@ The `width` and `height` of the content is defined in the `props` of the react c
 
 The `children` you will pass (only one child is supported) should occupy all the given space from the `DynaAnimation3dFlip`.
 
-### Props
+## Props
 
 - `className`: string - optional, is not needed really, use it only for position or margins etc
 - `show`: boolean - nothing much to say about this, it shows the content or not with animations
@@ -69,14 +67,13 @@ The `children` you will pass (only one child is supported) should occupy all the
 
 * _required_
 
-### CSSTransition support (v1)
+## CSSTransition support (v1)
 
 `DynaAnimation3dFlip` supports the [CSSTransition v1](https://github.com/reactjs/react-transition-group/tree/v1-stable).
 
 Just drop the items into the `CSSTransition` and set the `transitionName="animation-show"`. 
 
-
-### Example:
+## Example:
 
 ```
     <DynaAnimation3dFlip
@@ -93,8 +90,6 @@ Just drop the items into the `CSSTransition` and set the `transitionName="animat
 
 [DynaAnimation3dFlip example, needed css](https://github.com/aneldev/dyna-animation/blob/master/dev/showcase/flip-3d-item-show-hide.less)
 
-# Known issues 
-
 ## DynaAnimation3dFlip
 
 The background transparent space jumps on enter.
@@ -102,4 +97,46 @@ The background transparent space jumps on enter.
 This is caused from th js height definition that cannot be overridden from the css.
 
 To solve there is need to use the `TransitionGroup` and control the height from js only through it's events.
-  
+
+# DynaAnimationVerticalContainer
+
+This is the simplest animation component of this package. 
+
+It animates the vertically to show or hide it's content.
+
+The problem in css is that you can't animate with `height: auto`. 
+
+Use this container the handle the visibility through the `show` prop.
+
+Each time the container needs to show or hide the content, it calculates the height of the children.
+
+If the content of the children is modified and the height is changed, the `DynaAnimationVerticalContainer` offers the `refresh()` method to adjust the new height (with animation again).
+_In future this will be supported when `element resize event` proposal comes to life._ 
+
+## Example
+
+```   
+    <DynaAnimationVerticalContainer
+      show={null}
+      showDuration={200}
+      hideDuration={100}
+    >
+      <div className="vertical-container-content">
+        <h1>Dear user</h1>
+        <h3>I am the content</h3>
+        <p>For real!</p>
+      </div>
+    </DynaAnimationVerticalContainer>
+```
+
+## Props
+
+```
+    IDynaAnimationVerticalContainerProps {
+      className?: string;
+      show: boolean;
+      showDuration?: number;  // in ms
+      hideDuration?: number;  // in ms
+      children: any;
+    }
+```

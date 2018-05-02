@@ -7,7 +7,7 @@
 		exports["dyna-animation"] = factory(require("react"));
 	else
 		root["dyna-animation"] = factory(root["react"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,11 +70,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,7 +96,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var DynaAnimation = /** @class */ (function (_super) {
     __extends(DynaAnimation, _super);
     function DynaAnimation() {
@@ -140,12 +146,6 @@ exports.DynaAnimation = DynaAnimation;
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -170,156 +170,6 @@ var EAnimationDuration;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(4);
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var DynaAnimation_1 = __webpack_require__(0);
-exports.DynaAnimation = DynaAnimation_1.DynaAnimation;
-var DynaAnimation3dFlip_1 = __webpack_require__(5);
-exports.DynaAnimation3dFlip = DynaAnimation3dFlip_1.DynaAnimation3dFlip;
-var interfaces_1 = __webpack_require__(2);
-exports.EOrientation = interfaces_1.EOrientation;
-exports.EAnimationDuration = interfaces_1.EAnimationDuration;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
-var DynaAnimation_1 = __webpack_require__(0);
-var interfaces_1 = __webpack_require__(2);
-__webpack_require__(6);
-var DynaAnimation3dFlip = /** @class */ (function (_super) {
-    __extends(DynaAnimation3dFlip, _super);
-    function DynaAnimation3dFlip(props) {
-        var _this = _super.call(this, props) || this;
-        var _a = _this.props, direction = _a.direction, width = _a.width, height = _a.height;
-        if (!width && direction === interfaces_1.EOrientation.HORIZONTAL)
-            console.error('DynaAnimation3dFlip: Error, width should be defined for direction: EOrientation.HORIZONTAL');
-        if (!height && direction === interfaces_1.EOrientation.VERTICAL)
-            console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
-        return _this;
-    }
-    DynaAnimation3dFlip.prototype.getContainerStyle = function () {
-        var _a = this.props, show = _a.show, perspective = _a.perspective, width = _a.width, height = _a.height;
-        var outputStyle = {
-            perspective: perspective + "px",
-        };
-        if (width)
-            outputStyle.width = width + "px";
-        if (height)
-            outputStyle.height = height + "px";
-        return outputStyle;
-    };
-    DynaAnimation3dFlip.prototype.getChildStyle = function () {
-        var _a = this.props, width = _a.width, height = _a.height;
-        var outputStyle = {};
-        if (width)
-            outputStyle.width = width + "px";
-        if (height)
-            outputStyle.height = height + "px";
-        return outputStyle;
-    };
-    DynaAnimation3dFlip.prototype.render = function () {
-        var _a = this.props, userClassName = _a.className, show = _a.show, direction = _a.direction, duration = _a.duration, children = _a.children;
-        var className = [
-            "dyna-animation-3d-flip",
-            userClassName,
-            "flip-direction-" + direction,
-            "dyna-animation-3d-flip--duration-" + duration
-        ].join(' ').trim();
-        var child = React.cloneElement(children, { style: this.getChildStyle() });
-        var animations = {};
-        if (show != null)
-            animations.show = show;
-        return (React.createElement(DynaAnimation_1.DynaAnimation, { className: className, animations: animations, style: this.getContainerStyle() },
-            React.createElement("div", null, child)));
-    };
-    DynaAnimation3dFlip.defaultProps = {
-        className: '',
-        show: true,
-        perspective: 400,
-        width: null,
-        height: null,
-        duration: interfaces_1.EAnimationDuration.MS250,
-        direction: interfaces_1.EOrientation.HORIZONTAL,
-        children: null,
-    };
-    return DynaAnimation3dFlip;
-}(React.Component));
-exports.DynaAnimation3dFlip = DynaAnimation3dFlip;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(7);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(9)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaAnimation3dFlip.less", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaAnimation3dFlip.less");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(8)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".dyna-animation-3d-flip {\n  -webkit-perspective: 333px;\n          perspective: 333px;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 25ms forwards;\n          animation: container-width-show 25ms forwards;\n  -webkit-transition: width 25ms linear;\n  transition: width 25ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 25ms forwards;\n          animation: content-horizontal-show 25ms forwards;\n  -webkit-animation-delay: 25ms;\n          animation-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 25ms linear;\n  transition: height 25ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 25ms forwards;\n          animation: content-vertical-show 25ms forwards;\n  -webkit-animation-delay: 25ms;\n          animation-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 25ms linear;\n  transition: width 25ms linear;\n  -webkit-transition-delay: 25ms;\n          transition-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 25ms forwards;\n          animation: content-horizontal-hide 25ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 25ms linear;\n  transition: height 25ms linear;\n  -webkit-transition-delay: 25ms;\n          transition-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 25ms forwards;\n          animation: content-vertical-hide 25ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 50ms forwards;\n          animation: container-width-show 50ms forwards;\n  -webkit-transition: width 50ms linear;\n  transition: width 50ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 50ms forwards;\n          animation: content-horizontal-show 50ms forwards;\n  -webkit-animation-delay: 50ms;\n          animation-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 50ms linear;\n  transition: height 50ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 50ms forwards;\n          animation: content-vertical-show 50ms forwards;\n  -webkit-animation-delay: 50ms;\n          animation-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 50ms linear;\n  transition: width 50ms linear;\n  -webkit-transition-delay: 50ms;\n          transition-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 50ms forwards;\n          animation: content-horizontal-hide 50ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 50ms linear;\n  transition: height 50ms linear;\n  -webkit-transition-delay: 50ms;\n          transition-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 50ms forwards;\n          animation: content-vertical-hide 50ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 125ms forwards;\n          animation: container-width-show 125ms forwards;\n  -webkit-transition: width 125ms linear;\n  transition: width 125ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 125ms forwards;\n          animation: content-horizontal-show 125ms forwards;\n  -webkit-animation-delay: 125ms;\n          animation-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 125ms linear;\n  transition: height 125ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 125ms forwards;\n          animation: content-vertical-show 125ms forwards;\n  -webkit-animation-delay: 125ms;\n          animation-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 125ms linear;\n  transition: width 125ms linear;\n  -webkit-transition-delay: 125ms;\n          transition-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 125ms forwards;\n          animation: content-horizontal-hide 125ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 125ms linear;\n  transition: height 125ms linear;\n  -webkit-transition-delay: 125ms;\n          transition-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 125ms forwards;\n          animation: content-vertical-hide 125ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 250ms forwards;\n          animation: container-width-show 250ms forwards;\n  -webkit-transition: width 250ms linear;\n  transition: width 250ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 250ms forwards;\n          animation: content-horizontal-show 250ms forwards;\n  -webkit-animation-delay: 250ms;\n          animation-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 250ms linear;\n  transition: height 250ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 250ms forwards;\n          animation: content-vertical-show 250ms forwards;\n  -webkit-animation-delay: 250ms;\n          animation-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 250ms linear;\n  transition: width 250ms linear;\n  -webkit-transition-delay: 250ms;\n          transition-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 250ms forwards;\n          animation: content-horizontal-hide 250ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 250ms linear;\n  transition: height 250ms linear;\n  -webkit-transition-delay: 250ms;\n          transition-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 250ms forwards;\n          animation: content-vertical-hide 250ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 375ms forwards;\n          animation: container-width-show 375ms forwards;\n  -webkit-transition: width 375ms linear;\n  transition: width 375ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 375ms forwards;\n          animation: content-horizontal-show 375ms forwards;\n  -webkit-animation-delay: 375ms;\n          animation-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 375ms linear;\n  transition: height 375ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 375ms forwards;\n          animation: content-vertical-show 375ms forwards;\n  -webkit-animation-delay: 375ms;\n          animation-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 375ms linear;\n  transition: width 375ms linear;\n  -webkit-transition-delay: 375ms;\n          transition-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 375ms forwards;\n          animation: content-horizontal-hide 375ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 375ms linear;\n  transition: height 375ms linear;\n  -webkit-transition-delay: 375ms;\n          transition-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 375ms forwards;\n          animation: content-vertical-hide 375ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 0.5s forwards;\n          animation: container-width-show 0.5s forwards;\n  -webkit-transition: width 0.5s linear;\n  transition: width 0.5s linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 0.5s forwards;\n          animation: content-horizontal-show 0.5s forwards;\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 0.5s linear;\n  transition: height 0.5s linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 0.5s forwards;\n          animation: content-vertical-show 0.5s forwards;\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 0.5s linear;\n  transition: width 0.5s linear;\n  -webkit-transition-delay: 0.5s;\n          transition-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 0.5s forwards;\n          animation: content-horizontal-hide 0.5s forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 0.5s linear;\n  transition: height 0.5s linear;\n  -webkit-transition-delay: 0.5s;\n          transition-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 0.5s forwards;\n          animation: content-vertical-hide 0.5s forwards;\n}\n@-webkit-keyframes content-horizontal-show {\n  from {\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateY(360deg);\n            transform: rotateY(360deg);\n  }\n}\n@keyframes content-horizontal-show {\n  from {\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateY(360deg);\n            transform: rotateY(360deg);\n  }\n}\n@-webkit-keyframes content-horizontal-hide {\n  0% {\n    -webkit-transform: rotateY(0deg);\n            transform: rotateY(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateY(90deg);\n            transform: rotateY(90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n    overflow: hidden;\n  }\n}\n@keyframes content-horizontal-hide {\n  0% {\n    -webkit-transform: rotateY(0deg);\n            transform: rotateY(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateY(90deg);\n            transform: rotateY(90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n    overflow: hidden;\n  }\n}\n@-webkit-keyframes content-vertical-show {\n  from {\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n}\n@keyframes content-vertical-show {\n  from {\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n}\n@-webkit-keyframes content-vertical-hide {\n  0% {\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateX(-90deg);\n            transform: rotateX(-90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n@keyframes content-vertical-hide {\n  0% {\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateX(-90deg);\n            transform: rotateX(-90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -401,7 +251,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 9 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -760,6 +610,158 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(6);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var DynaAnimation_1 = __webpack_require__(1);
+exports.DynaAnimation = DynaAnimation_1.DynaAnimation;
+var DynaAnimation3dFlip_1 = __webpack_require__(7);
+exports.DynaAnimation3dFlip = DynaAnimation3dFlip_1.DynaAnimation3dFlip;
+var interfaces_1 = __webpack_require__(2);
+exports.EOrientation = interfaces_1.EOrientation;
+exports.EAnimationDuration = interfaces_1.EAnimationDuration;
+var DynaAnimationVerticalContainer_1 = __webpack_require__(11);
+exports.DynaAnimationVerticalContainer = DynaAnimationVerticalContainer_1.DynaAnimationVerticalContainer;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var DynaAnimation_1 = __webpack_require__(1);
+var interfaces_1 = __webpack_require__(2);
+__webpack_require__(8);
+var DynaAnimation3dFlip = /** @class */ (function (_super) {
+    __extends(DynaAnimation3dFlip, _super);
+    function DynaAnimation3dFlip(props) {
+        var _this = _super.call(this, props) || this;
+        var _a = _this.props, direction = _a.direction, width = _a.width, height = _a.height;
+        if (!width && direction === interfaces_1.EOrientation.HORIZONTAL)
+            console.error('DynaAnimation3dFlip: Error, width should be defined for direction: EOrientation.HORIZONTAL');
+        if (!height && direction === interfaces_1.EOrientation.VERTICAL)
+            console.error('DynaAnimation3dFlip: Error, height should be defined for direction: EOrientation.VERTICAL');
+        return _this;
+    }
+    DynaAnimation3dFlip.prototype.getContainerStyle = function () {
+        var _a = this.props, show = _a.show, perspective = _a.perspective, width = _a.width, height = _a.height;
+        var outputStyle = {
+            perspective: perspective + "px",
+        };
+        if (width)
+            outputStyle.width = width + "px";
+        if (height)
+            outputStyle.height = height + "px";
+        return outputStyle;
+    };
+    DynaAnimation3dFlip.prototype.getChildStyle = function () {
+        var _a = this.props, width = _a.width, height = _a.height;
+        var outputStyle = {};
+        if (width)
+            outputStyle.width = width + "px";
+        if (height)
+            outputStyle.height = height + "px";
+        return outputStyle;
+    };
+    DynaAnimation3dFlip.prototype.render = function () {
+        var _a = this.props, userClassName = _a.className, show = _a.show, direction = _a.direction, duration = _a.duration, children = _a.children;
+        var className = [
+            "dyna-animation-3d-flip",
+            userClassName,
+            "flip-direction-" + direction,
+            "dyna-animation-3d-flip--duration-" + duration
+        ].join(' ').trim();
+        var child = React.cloneElement(children, { style: this.getChildStyle() });
+        var animations = {};
+        if (show != null)
+            animations.show = show;
+        return (React.createElement(DynaAnimation_1.DynaAnimation, { className: className, animations: animations, style: this.getContainerStyle() },
+            React.createElement("div", null, child)));
+    };
+    DynaAnimation3dFlip.defaultProps = {
+        className: '',
+        show: true,
+        perspective: 400,
+        width: null,
+        height: null,
+        duration: interfaces_1.EAnimationDuration.MS250,
+        direction: interfaces_1.EOrientation.HORIZONTAL,
+        children: null,
+    };
+    return DynaAnimation3dFlip;
+}(React.Component));
+exports.DynaAnimation3dFlip = DynaAnimation3dFlip;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(9);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(4)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaAnimation3dFlip.less", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaAnimation3dFlip.less");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".dyna-animation-3d-flip {\n  -webkit-perspective: 333px;\n          perspective: 333px;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 25ms forwards;\n          animation: container-width-show 25ms forwards;\n  -webkit-transition: width 25ms linear;\n  transition: width 25ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 25ms forwards;\n          animation: content-horizontal-show 25ms forwards;\n  -webkit-animation-delay: 25ms;\n          animation-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 25ms linear;\n  transition: height 25ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 25ms forwards;\n          animation: content-vertical-show 25ms forwards;\n  -webkit-animation-delay: 25ms;\n          animation-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 25ms linear;\n  transition: width 25ms linear;\n  -webkit-transition-delay: 25ms;\n          transition-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 25ms forwards;\n          animation: content-horizontal-hide 25ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 25ms linear;\n  transition: height 25ms linear;\n  -webkit-transition-delay: 25ms;\n          transition-delay: 25ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS50.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 25ms forwards;\n          animation: content-vertical-hide 25ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 50ms forwards;\n          animation: container-width-show 50ms forwards;\n  -webkit-transition: width 50ms linear;\n  transition: width 50ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 50ms forwards;\n          animation: content-horizontal-show 50ms forwards;\n  -webkit-animation-delay: 50ms;\n          animation-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 50ms linear;\n  transition: height 50ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 50ms forwards;\n          animation: content-vertical-show 50ms forwards;\n  -webkit-animation-delay: 50ms;\n          animation-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 50ms linear;\n  transition: width 50ms linear;\n  -webkit-transition-delay: 50ms;\n          transition-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 50ms forwards;\n          animation: content-horizontal-hide 50ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 50ms linear;\n  transition: height 50ms linear;\n  -webkit-transition-delay: 50ms;\n          transition-delay: 50ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS100.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 50ms forwards;\n          animation: content-vertical-hide 50ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 125ms forwards;\n          animation: container-width-show 125ms forwards;\n  -webkit-transition: width 125ms linear;\n  transition: width 125ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 125ms forwards;\n          animation: content-horizontal-show 125ms forwards;\n  -webkit-animation-delay: 125ms;\n          animation-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 125ms linear;\n  transition: height 125ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 125ms forwards;\n          animation: content-vertical-show 125ms forwards;\n  -webkit-animation-delay: 125ms;\n          animation-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 125ms linear;\n  transition: width 125ms linear;\n  -webkit-transition-delay: 125ms;\n          transition-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 125ms forwards;\n          animation: content-horizontal-hide 125ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 125ms linear;\n  transition: height 125ms linear;\n  -webkit-transition-delay: 125ms;\n          transition-delay: 125ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS250.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 125ms forwards;\n          animation: content-vertical-hide 125ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 250ms forwards;\n          animation: container-width-show 250ms forwards;\n  -webkit-transition: width 250ms linear;\n  transition: width 250ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 250ms forwards;\n          animation: content-horizontal-show 250ms forwards;\n  -webkit-animation-delay: 250ms;\n          animation-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 250ms linear;\n  transition: height 250ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 250ms forwards;\n          animation: content-vertical-show 250ms forwards;\n  -webkit-animation-delay: 250ms;\n          animation-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 250ms linear;\n  transition: width 250ms linear;\n  -webkit-transition-delay: 250ms;\n          transition-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 250ms forwards;\n          animation: content-horizontal-hide 250ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 250ms linear;\n  transition: height 250ms linear;\n  -webkit-transition-delay: 250ms;\n          transition-delay: 250ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS500.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 250ms forwards;\n          animation: content-vertical-hide 250ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 375ms forwards;\n          animation: container-width-show 375ms forwards;\n  -webkit-transition: width 375ms linear;\n  transition: width 375ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 375ms forwards;\n          animation: content-horizontal-show 375ms forwards;\n  -webkit-animation-delay: 375ms;\n          animation-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 375ms linear;\n  transition: height 375ms linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 375ms forwards;\n          animation: content-vertical-show 375ms forwards;\n  -webkit-animation-delay: 375ms;\n          animation-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 375ms linear;\n  transition: width 375ms linear;\n  -webkit-transition-delay: 375ms;\n          transition-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 375ms forwards;\n          animation: content-horizontal-hide 375ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 375ms linear;\n  transition: height 375ms linear;\n  -webkit-transition-delay: 375ms;\n          transition-delay: 375ms;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-MS750.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 375ms forwards;\n          animation: content-vertical-hide 375ms forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-HORIZONTAL {\n  -webkit-animation: container-width-show 0.5s forwards;\n          animation: container-width-show 0.5s forwards;\n  -webkit-transition: width 0.5s linear;\n  transition: width 0.5s linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-HORIZONTAL > div {\n  opacity: 0;\n  -webkit-animation: content-horizontal-show 0.5s forwards;\n          animation: content-horizontal-show 0.5s forwards;\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-VERTICAL {\n  height: 0;\n  -webkit-transition: height 0.5s linear;\n  transition: height 0.5s linear;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-on:not(.animation-show-leave).flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-enter.flip-direction-VERTICAL > div {\n  opacity: 0;\n  -webkit-animation: content-vertical-show 0.5s forwards;\n          animation: content-vertical-show 0.5s forwards;\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-HORIZONTAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-HORIZONTAL {\n  -webkit-transition: width 0.5s linear;\n  transition: width 0.5s linear;\n  -webkit-transition-delay: 0.5s;\n          transition-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-HORIZONTAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-HORIZONTAL > div {\n  -webkit-animation: content-horizontal-hide 0.5s forwards;\n          animation: content-horizontal-hide 0.5s forwards;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-VERTICAL,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-VERTICAL {\n  height: 0 !important;\n  -webkit-transition: height 0.5s linear;\n  transition: height 0.5s linear;\n  -webkit-transition-delay: 0.5s;\n          transition-delay: 0.5s;\n}\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-off.flip-direction-VERTICAL > div,\n.dyna-animation-3d-flip.dyna-animation-3d-flip--duration-S1.animation-show-leave.flip-direction-VERTICAL > div {\n  -webkit-animation: content-vertical-hide 0.5s forwards;\n          animation: content-vertical-hide 0.5s forwards;\n}\n@-webkit-keyframes content-horizontal-show {\n  from {\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateY(360deg);\n            transform: rotateY(360deg);\n  }\n}\n@keyframes content-horizontal-show {\n  from {\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateY(270deg);\n            transform: rotateY(270deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateY(360deg);\n            transform: rotateY(360deg);\n  }\n}\n@-webkit-keyframes content-horizontal-hide {\n  0% {\n    -webkit-transform: rotateY(0deg);\n            transform: rotateY(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateY(90deg);\n            transform: rotateY(90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n    overflow: hidden;\n  }\n}\n@keyframes content-horizontal-hide {\n  0% {\n    -webkit-transform: rotateY(0deg);\n            transform: rotateY(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateY(90deg);\n            transform: rotateY(90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n    overflow: hidden;\n  }\n}\n@-webkit-keyframes content-vertical-show {\n  from {\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n}\n@keyframes content-vertical-show {\n  from {\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  0.001% {\n    opacity: 1;\n    -webkit-transform: rotateX(90deg);\n            transform: rotateX(90deg);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n}\n@-webkit-keyframes content-vertical-hide {\n  0% {\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateX(-90deg);\n            transform: rotateX(-90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n@keyframes content-vertical-hide {\n  0% {\n    -webkit-transform: rotateX(0deg);\n            transform: rotateX(0deg);\n  }\n  99.999% {\n    -webkit-transform: rotateX(-90deg);\n            transform: rotateX(-90deg);\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -853,6 +855,143 @@ module.exports = function (css) {
 	// send back the fixed css
 	return fixedCss;
 };
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+__webpack_require__(12);
+var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
+    __extends(DynaAnimationVerticalContainer, _super);
+    function DynaAnimationVerticalContainer() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.baseClassName = "dyna-animation-vertical-height-container";
+        return _this;
+    }
+    DynaAnimationVerticalContainer.prototype.refresh = function () {
+        var show = this.props.show;
+        if (!show)
+            return;
+        this.show(true);
+    };
+    DynaAnimationVerticalContainer.prototype.componentDidMount = function () {
+        this.show(this.props.show, false);
+    };
+    DynaAnimationVerticalContainer.prototype.componentWillReceiveProps = function (nextProps) {
+        if (nextProps.show !== this.props.show) {
+            this.show(nextProps.show);
+        }
+    };
+    DynaAnimationVerticalContainer.prototype.className = function (subClassName) {
+        if (subClassName === void 0) { subClassName = ""; }
+        return "" + this.baseClassName + (subClassName || "");
+    };
+    DynaAnimationVerticalContainer.prototype.show = function (show, animate) {
+        if (animate === void 0) { animate = true; }
+        if (show) {
+            this.setContainerHeight(show, this.getContentHeight(), animate);
+        }
+        else {
+            this.setContainerHeight(show, 0, animate);
+        }
+    };
+    DynaAnimationVerticalContainer.prototype.setContainerHeight = function (show, height, animate) {
+        this.setAnimation(show, animate);
+        this.refs.container.style.height = height + "px";
+    };
+    DynaAnimationVerticalContainer.prototype.getContentHeight = function () {
+        return this.refs.content.offsetHeight;
+    };
+    DynaAnimationVerticalContainer.prototype.setAnimation = function (show, animate) {
+        var _a = this.props, showDuration = _a.showDuration, hideDuration = _a.hideDuration;
+        var duration;
+        if (animate) {
+            duration = show ? showDuration : hideDuration;
+        }
+        else {
+            duration = 0;
+        }
+        this.refs.container.style.transition = "height " + duration + "ms ease-in-out";
+    };
+    DynaAnimationVerticalContainer.prototype.render = function () {
+        var _a = this.props, userClassName = _a.className, children = _a.children;
+        var className = [
+            this.className(),
+            userClassName,
+        ].join(' ').trim();
+        return (React.createElement("div", { className: className, ref: "container" },
+            React.createElement("div", { className: this.className('__content'), ref: "content" }, children)));
+    };
+    DynaAnimationVerticalContainer.defaultProps = {
+        className: "",
+        show: false,
+        showDuration: 250,
+        hideDuration: 150,
+        children: null,
+    };
+    return DynaAnimationVerticalContainer;
+}(React.Component));
+exports.DynaAnimationVerticalContainer = DynaAnimationVerticalContainer;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(13);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(4)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaAnimationVerticalContainer.less", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/lib/index.js??ref--4-2!../node_modules/less-loader/dist/cjs.js!./DynaAnimationVerticalContainer.less");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".dyna-animation-vertical-height-container {\n  overflow: hidden;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

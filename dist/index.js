@@ -988,7 +988,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ".dyna-animation-vertical-height-container {\n  overflow: hidden;\n}\n", ""]);
+exports.push([module.i, ".dyna-animation-vertical-height-container {\n  overflow: hidden;\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n}\n", ""]);
 
 // exports
 

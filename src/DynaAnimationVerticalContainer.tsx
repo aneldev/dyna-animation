@@ -4,6 +4,7 @@ import "./DynaAnimationVerticalContainer.less";
 
 export interface IDynaAnimationVerticalContainerProps {
   className?: string;
+  animationEnabled?: boolean;
   show: boolean;
   showDuration?: number;  // in ms
   hideDuration?: number;  // in ms
@@ -13,6 +14,7 @@ export interface IDynaAnimationVerticalContainerProps {
 export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimationVerticalContainerProps> {
   static defaultProps: IDynaAnimationVerticalContainerProps = {
     className: "",
+    animationEnabled: true,
     show: false,
     showDuration: 250,
     hideDuration: 150,
@@ -63,9 +65,12 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
   }
 
   private setAnimation(show: boolean, animate: boolean): void {
-    const {showDuration, hideDuration} = this.props;
+    const {animationEnabled, showDuration, hideDuration} = this.props;
     let duration: number;
-    if (animate) {
+    if (!animationEnabled) {
+      duration = 0;
+    }
+    else if (animate) {
       duration = show ? showDuration : hideDuration;
     }
     else {

@@ -7,6 +7,7 @@ import "./DynaAnimation3dFlip.less";
 
 export interface IDynaAnimation3dFlipProps {
   className?: string;
+  animationEnabled?: boolean;
   show?: boolean;
   perspective: number;
   width?: number;
@@ -19,6 +20,7 @@ export interface IDynaAnimation3dFlipProps {
 export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipProps> {
   static defaultProps: IDynaAnimation3dFlipProps = {
     className: '',
+    animationEnabled: true,
     show: true,
     perspective: 400,
     width: null,
@@ -37,7 +39,6 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
 
   private getContainerStyle(): CSSProperties {
     const {
-      show,
       perspective,
       width,
       height,
@@ -70,6 +71,7 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
   public render(): JSX.Element {
     const {
       className: userClassName,
+      animationEnabled,
       show,
       direction,
       duration,
@@ -77,10 +79,10 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
     } = this.props;
 
     const className: string = [
-      "dyna-animation-3d-flip",
       userClassName,
-      `flip-direction-${direction}`,
-      `dyna-animation-3d-flip--duration-${duration}`
+      animationEnabled ? "dyna-animation-3d-flip" : "dyna-animation-3d-flip--animation-disabled",
+      animationEnabled ? `flip-direction-${direction}` : "",
+      animationEnabled ? `dyna-animation-3d-flip--duration-${duration}` : "",
     ].join(' ').trim();
 
     const child: JSX.Element = React.cloneElement(

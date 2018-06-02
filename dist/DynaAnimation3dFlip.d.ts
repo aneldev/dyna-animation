@@ -3,6 +3,7 @@ import { EAnimationDuration, EOrientation } from "./interfaces";
 import "./DynaAnimation3dFlip.less";
 export interface IDynaAnimation3dFlipProps {
     className?: string;
+    animationEnabled?: boolean;
     show?: boolean;
     perspective: number;
     width?: number;

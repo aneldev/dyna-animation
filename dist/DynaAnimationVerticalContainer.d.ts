@@ -2,6 +2,7 @@ import * as React from "react";
 import "./DynaAnimationVerticalContainer.less";
 export interface IDynaAnimationVerticalContainerProps {
     className?: string;
+    animationEnabled?: boolean;
     show: boolean;
     showDuration?: number;
     hideDuration?: number;

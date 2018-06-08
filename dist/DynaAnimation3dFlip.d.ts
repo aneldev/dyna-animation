@@ -15,7 +15,7 @@ export interface IDynaAnimation3dFlipProps {
 export declare class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipProps> {
     static defaultProps: IDynaAnimation3dFlipProps;
     constructor(props: IDynaAnimation3dFlipProps);
-    private getContainerStyle();
-    private getChildStyle();
+    private getContainerStyle;
+    private getChildStyle;
     render(): JSX.Element;
 }

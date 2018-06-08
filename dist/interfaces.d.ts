@@ -3,7 +3,7 @@ export declare type TAnimationConfig = {
 };
 export declare enum EOrientation {
     HORIZONTAL = "HORIZONTAL",
-    VERTICAL = "VERTICAL",
+    VERTICAL = "VERTICAL"
 }
 export declare enum EAnimationDuration {
     MS50 = "MS50",
@@ -11,5 +11,5 @@ export declare enum EAnimationDuration {
     MS250 = "MS250",
     MS500 = "MS500",
     MS750 = "MS750",
-    S1 = "S1",
+    S1 = "S1"
 }

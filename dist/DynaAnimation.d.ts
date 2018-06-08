@@ -9,7 +9,7 @@ export interface IDynaAnimationProps {
 }
 export declare class DynaAnimation extends React.Component<IDynaAnimationProps> {
     static defaultProps: IDynaAnimationProps;
-    private getClassNameForDynaAnimations();
-    private getClassNameForCssTransitions();
+    private getClassNameForDynaAnimations;
+    private getClassNameForCssTransitions;
     render(): JSX.Element;
 }

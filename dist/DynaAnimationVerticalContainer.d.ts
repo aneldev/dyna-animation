@@ -18,10 +18,10 @@ export declare class DynaAnimationVerticalContainer extends React.Component<IDyn
     refresh(): void;
     componentDidMount(): void;
     componentWillReceiveProps(nextProps: IDynaAnimationVerticalContainerProps): void;
-    private className(subClassName?);
-    private show(show, animate?);
-    private setContainerHeight(show, height, animate);
-    private getContentHeight();
-    private setAnimation(show, animate);
+    private className;
+    private show;
+    private setContainerHeight;
+    private getContentHeight;
+    private setAnimation;
     render(): JSX.Element;
 }

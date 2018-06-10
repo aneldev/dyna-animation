@@ -3,6 +3,7 @@ import "./DynaAnimationVerticalContainer.less";
 export interface IDynaAnimationVerticalContainerProps {
     className?: string;
     animationEnabled?: boolean;
+    autoRefresh?: boolean;
     show: boolean;
     showDuration?: number;
     hideDuration?: number;
@@ -10,15 +11,17 @@ export interface IDynaAnimationVerticalContainerProps {
 }
 export declare class DynaAnimationVerticalContainer extends React.Component<IDynaAnimationVerticalContainerProps> {
     static defaultProps: IDynaAnimationVerticalContainerProps;
+    private observer;
     private readonly baseClassName;
     refs: {
         container: HTMLDivElement;
         content: HTMLDivElement;
     };
-    refresh(): void;
     componentDidMount(): void;
+    componentWillUnmount(): void;
     componentWillReceiveProps(nextProps: IDynaAnimationVerticalContainerProps): void;
     private className;
+    refresh(): void;
     private show;
     private setContainerHeight;
     private getContentHeight;

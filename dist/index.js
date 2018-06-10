@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"));
+		module.exports = factory(require("react"), require("dyna-ui-dom-observer"));
 	else if(typeof define === 'function' && define.amd)
-		define("dyna-animation", ["react"], factory);
+		define("dyna-animation", ["react", "dyna-ui-dom-observer"], factory);
 	else if(typeof exports === 'object')
-		exports["dyna-animation"] = factory(require("react"));
+		exports["dyna-animation"] = factory(require("react"), require("dyna-ui-dom-observer"));
 	else
-		root["dyna-animation"] = factory(root["react"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
+		root["dyna-animation"] = factory(root["react"], root["dyna-ui-dom-observer"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_12__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -875,7 +875,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(12);
+var dyna_ui_dom_observer_1 = __webpack_require__(12);
+__webpack_require__(13);
 var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
     __extends(DynaAnimationVerticalContainer, _super);
     function DynaAnimationVerticalContainer() {
@@ -883,14 +884,21 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
         _this.baseClassName = "dyna-animation-vertical-height-container";
         return _this;
     }
-    DynaAnimationVerticalContainer.prototype.refresh = function () {
-        var show = this.props.show;
-        if (!show)
-            return;
-        this.show(true);
-    };
     DynaAnimationVerticalContainer.prototype.componentDidMount = function () {
+        var autoRefresh = this.props.autoRefresh;
         this.show(this.props.show, false);
+        if (autoRefresh) {
+            this.observer = new dyna_ui_dom_observer_1.DynaDomObserver({
+                rootNode: this.refs.container,
+                onChange: this.refresh.bind(this),
+            });
+        }
+    };
+    DynaAnimationVerticalContainer.prototype.componentWillUnmount = function () {
+        var autoRefresh = this.props.autoRefresh;
+        if (autoRefresh) {
+            this.observer.dispose();
+        }
     };
     DynaAnimationVerticalContainer.prototype.componentWillReceiveProps = function (nextProps) {
         if (nextProps.show !== this.props.show) {
@@ -900,6 +908,12 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
     DynaAnimationVerticalContainer.prototype.className = function (subClassName) {
         if (subClassName === void 0) { subClassName = ""; }
         return "" + this.baseClassName + (subClassName || "");
+    };
+    DynaAnimationVerticalContainer.prototype.refresh = function () {
+        var show = this.props.show;
+        if (!show)
+            return;
+        this.show(true);
     };
     DynaAnimationVerticalContainer.prototype.show = function (show, animate) {
         if (animate === void 0) { animate = true; }
@@ -943,6 +957,7 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
     DynaAnimationVerticalContainer.defaultProps = {
         className: "",
         animationEnabled: true,
+        autoRefresh: true,
         show: false,
         showDuration: 250,
         hideDuration: 150,
@@ -955,12 +970,18 @@ exports.DynaAnimationVerticalContainer = DynaAnimationVerticalContainer;
 
 /***/ }),
 /* 12 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_12__;
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -985,7 +1006,7 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);

@@ -31,6 +31,7 @@
   "author": "Anel dev",
   "license": "MIT",
   "dependencies": {
+    "dyna-ui-dom-observer": "^1.0.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },

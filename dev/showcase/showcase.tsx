@@ -3,6 +3,7 @@ import {showcaseView as oneItemShowcaseView} from "./simple-one-element-animatio
 import {showcaseView as flip3dItemShocaseView} from "./flip-3d-item-show-hide";
 import {showcaseView as listWithFlip3dItemsShowcaseView} from "./list-with-flip-3d-items";
 import {showcaseView as verticalContainerShowcase} from "./vertical-container";
+import {showcaseView as verticalContainerAutoRefreshShowcase} from "./vertical-container-auto-refresh";
 
 import {faIcon, IShowcase} from "dyna-showcase";
 import {Logo} from "../logo";
@@ -37,6 +38,8 @@ export default {
     listWithFlip3dItemsShowcaseView,
 
     verticalContainerShowcase,
+
+    verticalContainerAutoRefreshShowcase,
 
     {
       slug: 'the-end',

@@ -110,8 +110,9 @@ Use this container the handle the visibility through the `show` prop.
 
 Each time the container needs to show or hide the content, it calculates the height of the children.
 
-If the content of the children is modified and the height is changed, the `DynaAnimationVerticalContainer` offers the `refresh()` method to adjust the new height (with animation again).
-_In future this will be supported when `element resize event` proposal comes to life._ 
+If the content of the children is modified and the height is changed this is detected and applied instantly. This is done due to prop `autoRefresh: true`.
+ 
+Alternative you can turn it to false and call the `refresh()` method to refresh the new height according the children height.
 
 ## Example
 

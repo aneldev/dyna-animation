@@ -1,10 +1,12 @@
 import * as React from "react";
+import {DynaDomObserver} from "dyna-ui-dom-observer";
 
 import "./DynaAnimationVerticalContainer.less";
 
 export interface IDynaAnimationVerticalContainerProps {
   className?: string;
   animationEnabled?: boolean;
+  autoRefresh?: boolean;
   show: boolean;
   showDuration?: number;  // in ms
   hideDuration?: number;  // in ms
@@ -15,25 +17,39 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
   static defaultProps: IDynaAnimationVerticalContainerProps = {
     className: "",
     animationEnabled: true,
+    autoRefresh: true,
     show: false,
     showDuration: 250,
     hideDuration: 150,
     children: null,
   };
+
+  private observer: DynaDomObserver;
   private readonly baseClassName: string = "dyna-animation-vertical-height-container";
+
   public refs: {
     container: HTMLDivElement;
     content: HTMLDivElement;
   };
 
-  public refresh(): void {
-    const {show} = this.props;
-    if (!show) return;
-    this.show(true);
+  public componentDidMount(): void {
+    const {autoRefresh} = this.props;
+
+    this.show(this.props.show, false);
+
+    if (autoRefresh) {
+      this.observer = new DynaDomObserver({
+        rootNode: this.refs.container,
+        onChange: this.refresh.bind(this),
+      });
+    }
   }
 
-  public componentDidMount(): void {
-    this.show(this.props.show, false);
+  public componentWillUnmount(): void {
+    const {autoRefresh} = this.props;
+    if (autoRefresh) {
+      this.observer.dispose();
+    }
   }
 
   public componentWillReceiveProps(nextProps: IDynaAnimationVerticalContainerProps): void {
@@ -44,6 +60,12 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
 
   private className(subClassName = ""): string {
     return `${this.baseClassName}${subClassName || ""}`;
+  }
+
+  public refresh(): void {
+    const {show} = this.props;
+    if (!show) return;
+    this.show(true);
   }
 
   private show(show: boolean, animate: boolean = true): void {

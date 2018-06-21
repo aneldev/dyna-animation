@@ -118,7 +118,7 @@ Alternative you can turn it to false and call the `refresh()` method to refresh 
 
 ```   
     <DynaAnimationVerticalContainer
-      show={null}
+      show={true}
       showDuration={200}
       hideDuration={100}
     >

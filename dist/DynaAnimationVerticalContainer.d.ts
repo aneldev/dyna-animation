@@ -11,6 +11,7 @@ export interface IDynaAnimationVerticalContainerProps {
 }
 export declare class DynaAnimationVerticalContainer extends React.Component<IDynaAnimationVerticalContainerProps> {
     static defaultProps: IDynaAnimationVerticalContainerProps;
+    constructor(props: IDynaAnimationVerticalContainerProps);
     private observer;
     private readonly baseClassName;
     refs: {

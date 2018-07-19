@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("dyna-ui-dom-observer"));
+		module.exports = factory(require("react"), require("dyna-ui-dom-observer"), require("dyna-debounce"));
 	else if(typeof define === 'function' && define.amd)
-		define("dyna-animation", ["react", "dyna-ui-dom-observer"], factory);
+		define("dyna-animation", ["react", "dyna-ui-dom-observer", "dyna-debounce"], factory);
 	else if(typeof exports === 'object')
-		exports["dyna-animation"] = factory(require("react"), require("dyna-ui-dom-observer"));
+		exports["dyna-animation"] = factory(require("react"), require("dyna-ui-dom-observer"), require("dyna-debounce"));
 	else
-		root["dyna-animation"] = factory(root["react"], root["dyna-ui-dom-observer"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_12__) {
+		root["dyna-animation"] = factory(root["react"], root["dyna-ui-dom-observer"], root["dyna-debounce"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -876,12 +876,14 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var dyna_ui_dom_observer_1 = __webpack_require__(12);
-__webpack_require__(13);
+var dyna_debounce_1 = __webpack_require__(13);
+__webpack_require__(14);
 var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
     __extends(DynaAnimationVerticalContainer, _super);
-    function DynaAnimationVerticalContainer() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+    function DynaAnimationVerticalContainer(props) {
+        var _this = _super.call(this, props) || this;
         _this.baseClassName = "dyna-animation-vertical-height-container";
+        _this.refresh = dyna_debounce_1.dynaDebounce(_this.refresh.bind(_this), 100, true);
         return _this;
     }
     DynaAnimationVerticalContainer.prototype.componentDidMount = function () {
@@ -890,15 +892,17 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
         if (autoRefresh) {
             this.observer = new dyna_ui_dom_observer_1.DynaDomObserver({
                 rootNode: this.refs.container,
-                onChange: this.refresh.bind(this),
+                onChange: this.refresh,
             });
         }
+        window.addEventListener('resize', this.refresh);
     };
     DynaAnimationVerticalContainer.prototype.componentWillUnmount = function () {
         var autoRefresh = this.props.autoRefresh;
         if (autoRefresh) {
             this.observer.dispose();
         }
+        window.removeEventListener('resize', this.refresh);
     };
     DynaAnimationVerticalContainer.prototype.componentWillReceiveProps = function (nextProps) {
         if (nextProps.show !== this.props.show) {
@@ -976,12 +980,18 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_12__;
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_13__;
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(14);
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -1006,7 +1016,7 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);

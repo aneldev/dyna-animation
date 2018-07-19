@@ -1,5 +1,6 @@
 import * as React from "react";
 import {DynaDomObserver} from "dyna-ui-dom-observer";
+import {dynaDebounce} from "dyna-debounce"
 
 import "./DynaAnimationVerticalContainer.less";
 
@@ -24,6 +25,11 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
     children: null,
   };
 
+  constructor(props: IDynaAnimationVerticalContainerProps) {
+    super(props);
+    this.refresh = dynaDebounce(this.refresh.bind(this), 100, true);
+  }
+
   private observer: DynaDomObserver;
   private readonly baseClassName: string = "dyna-animation-vertical-height-container";
 
@@ -40,9 +46,11 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
     if (autoRefresh) {
       this.observer = new DynaDomObserver({
         rootNode: this.refs.container,
-        onChange: this.refresh.bind(this),
+        onChange: this.refresh,
       });
     }
+
+    window.addEventListener('resize', this.refresh);
   }
 
   public componentWillUnmount(): void {
@@ -50,6 +58,7 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
     if (autoRefresh) {
       this.observer.dispose();
     }
+    window.removeEventListener('resize', this.refresh);
   }
 
   public componentWillReceiveProps(nextProps: IDynaAnimationVerticalContainerProps): void {

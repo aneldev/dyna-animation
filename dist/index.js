@@ -914,10 +914,12 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
         return "" + this.baseClassName + (subClassName || "");
     };
     DynaAnimationVerticalContainer.prototype.refresh = function () {
+        var _this = this;
         var show = this.props.show;
         if (!show)
             return;
         this.show(true);
+        setTimeout(function () { return _this.show(true); }, 300);
     };
     DynaAnimationVerticalContainer.prototype.show = function (show, animate) {
         if (animate === void 0) { animate = true; }

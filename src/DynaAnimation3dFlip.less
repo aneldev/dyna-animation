@@ -1,6 +1,12 @@
 .dyna-animation-3d-flip {
   perspective: 333px; // fallback value, is overridden from javascript!
 
+  &__child{
+    > * {
+      height: 100%;
+    }
+  }
+
   .createByDuration(MS50, 50ms);
   .createByDuration(MS100, 100ms);
   .createByDuration(MS250, 250ms);

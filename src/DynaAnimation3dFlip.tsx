@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CSSProperties } from 'react';
-import { DynaAnimation } from "./DynaAnimation";
-import { EAnimationDuration, EOrientation, TAnimationConfig } from "./interfaces";
+import {CSSProperties} from 'react';
+import {DynaAnimation} from "./DynaAnimation";
+import {EAnimationDuration, EOrientation, TAnimationConfig} from "./interfaces";
 
 import "./DynaAnimation3dFlip.less";
 
@@ -85,11 +85,6 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
       animationEnabled ? `dyna-animation-3d-flip--duration-${duration}` : "",
     ].join(' ').trim();
 
-    const child: JSX.Element = React.cloneElement(
-      children,
-      {style: this.getChildStyle()}
-      );
-
     const animations: TAnimationConfig = {};
     if (show != null) animations.show = show;
 
@@ -99,7 +94,12 @@ export class DynaAnimation3dFlip extends React.Component<IDynaAnimation3dFlipPro
         animations={animations}
         style={this.getContainerStyle()}
       >
-        <div>{child}</div>
+        <div
+          className="dyna-animation-3d-flip__child"
+          style={this.getChildStyle()}
+        >
+          {children}
+        </div>
       </DynaAnimation>
     );
   }

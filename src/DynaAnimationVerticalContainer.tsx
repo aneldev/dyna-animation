@@ -72,10 +72,8 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
   }
 
   public refresh(): void {
-    const {show} = this.props;
-    if (!show) return;
-    this.show(true);
-    setTimeout(()=>this.show(true), 300);
+    this.show(this.props.show);
+    setTimeout(() => this.show(this.props.show), 300);
   }
 
   private show(show: boolean, animate: boolean = true): void {

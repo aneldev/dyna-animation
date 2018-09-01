@@ -927,6 +927,8 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
         }
     };
     DynaAnimationVerticalContainer.prototype.setContainerHeight = function (show, height, animate) {
+        if (!this.refs.container)
+            return; // it is unmount
         this.setAnimation(show, animate);
         this.refs.container.style.height = height + "px";
     };
@@ -934,6 +936,8 @@ var DynaAnimationVerticalContainer = /** @class */ (function (_super) {
         return this.refs.content.offsetHeight;
     };
     DynaAnimationVerticalContainer.prototype.setAnimation = function (show, animate) {
+        if (!this.refs.container)
+            return; // it is unmount
         var _a = this.props, animationEnabled = _a.animationEnabled, showDuration = _a.showDuration, hideDuration = _a.hideDuration;
         var duration;
         if (!animationEnabled) {

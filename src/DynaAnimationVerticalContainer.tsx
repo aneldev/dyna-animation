@@ -86,6 +86,8 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
   }
 
   private setContainerHeight(show: boolean, height: number, animate: boolean): void {
+    if (!this.refs.container) return; // it is unmount
+
     this.setAnimation(show, animate);
     this.refs.container.style.height = `${height}px`;
   }
@@ -95,6 +97,8 @@ export class DynaAnimationVerticalContainer extends React.Component<IDynaAnimati
   }
 
   private setAnimation(show: boolean, animate: boolean): void {
+    if (!this.refs.container) return; // it is unmount
+
     const {animationEnabled, showDuration, hideDuration} = this.props;
     let duration: number;
     if (!animationEnabled) {
